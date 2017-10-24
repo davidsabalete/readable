@@ -1,39 +1,25 @@
-import api from '../lib/api'
+import { api } from '../utils/api'
 
-export const FETCH_POSTS = 'FETCH_POSTS'
-export const FETCH_CATEGORY_POSTS = 'FETCH_CATEGORY_POSTS'
+export const LOAD_POSTS = 'LOAD_POSTS'
+export const LOAD_CATEGORY_POSTS = 'LOAD_CATEGORY_POSTS'
 
-export function fetchPostsAsync() {
-  return dispatch => api
-    .get(`/posts`)
-    .then(response => response.data)
-  	.then(
-    	data => dispatch(fetchPosts(data)), 
-    	error => console.error(error)
-  	)
-}  
-
-export function fetchCategoryPostsAsync (category) {
-  return dispatch =>
-    api
-      .get(`/${category}/posts`)
-      .then(response => response.data)
-      .then(
-        data => dispatch(fetchCategoryPosts(category, data)),
-        error => console.error(error)
-      )
+export const fetchPosts = () => dispatch => {
+  api
+    .get('/posts')
+    .then(res => dispatch(loadPosts(res.data)))
 }
+export const loadPosts = (data) => ({
+  type: LOAD_POSTS,
+  payload: data
+})
 
-export function fetchPosts(data) {
-  return {
-    type: FETCH_POSTS,
-    data
-  }
+export const fetchCategoryPosts = (category) => dispatch => {
+  api
+    .get(`/${category}/posts`)
+    .then(res => dispatch(loadCategoryPosts(category, res.data)),
+          error => console.log(error))
 }
-
-function fetchCategoryPosts (category, data) {
-  return {
-    type: FETCH_CATEGORY_POSTS, 
-    data
-  }
-}
+export const loadCategoryPosts = (category, data) => ({
+  type: LOAD_CATEGORY_POSTS,
+  payload: data
+})

@@ -3,3 +3,39 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+header {
+  background-color: #f9f5d2;
+  margin-top: 0;
+  top: 0;
+  padding: 1em 3em;
+  text-align: center;
+}
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #f9f5d2;
+  text-align: center;
+}
+.links-categories a {
+  margin: 1em; 
+}
+.active {
+  text-decoration: none;
+  font-weight: bold;
+}
+.list-group {
+  list-style-type: none;
+}
+.list-group li {
+  float: left;
+  margin-left: 2em;
+}
+.current {
+  color: pink;
+}
+.card { 
+  margin: 2em;
+  padding: 2em 1em 0em 1em;
+}

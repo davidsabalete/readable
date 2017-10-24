@@ -7,7 +7,7 @@ import {
   VOTE_POST
 } from '../actions/post'
 
-function post (state = {}, action) {
+const post = (state = {}, action) => {
   switch (action.type) {
     case RESET_POST:
     case FETCH_POST:

@@ -1,7 +1,7 @@
+import { api } from '../utils/api'
 import uuidv4 from 'uuid/v4'
-import api from '../lib/api'
 
-export const FETCH_POST_COMMENTS = 'FETCH_POST_COMMENTS'
+export const LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS'
 export const CREATE_POST_COMMENT = 'CREATE_POST_COMMENT'
 export const EDIT_POST_COMMENT = 'EDIT_POST_COMMENT'
 export const DELETE_POST_COMMENT = 'DELETE_POST_COMMENT'
@@ -69,7 +69,7 @@ export function votePostCommentAsync ({commentId, vote}) {
 }
 
 function fetchPostComments (data) {
-  return {type: FETCH_POST_COMMENTS, data}
+  return {type: LOAD_POST_COMMENTS, data}
 }
 
 function createPostComment (data) {

@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
+import CategoryList from './CategoryList'
 
-const divStyle = {
-  textAlign: 'center',
-  backgroundColor: '#f9f5d2',
-  height: '3rem',
-  padding: '1rem'
+class Header extends Component {
+  render() {
+    return (
+      <header>
+        <h2>Project READABLE</h2>
+        <CategoryList />
+      </header>
+    )
+  }
 }
 
-export default function () {
-  return (
-    <header style={divStyle}>
-      <h2>READABLE PROJECT</h2>
-    </header>
-  ); 
-}
+export default Header

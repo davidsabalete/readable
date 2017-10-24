@@ -1,10 +1,14 @@
-import { FETCH_CATEGORIES } from '../actions/categories'
+import { 
+  LOAD_CATEGORIES
+} from '../actions/categories'
 
-function categories (state = [], action) {
-  switch (action.type) {
-    case FETCH_CATEGORIES:
-      return action.data
-    default:
+const categories = (state = [], action) => {
+  switch(action.type) {
+    case LOAD_CATEGORIES :
+      console.log(action)
+      const { categories } = action.payload
+      return [...categories]
+    default: 
       return state
   }
 }

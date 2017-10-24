@@ -1,21 +1,13 @@
-import api from '../lib/api'
+import { api } from '../utils/api'
 
-export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
+export const LOAD_CATEGORIES = 'LOAD_CATEGORIES'
 
-export function fetchCategoriesAsync () {
-  return dispatch =>
-    api
-      .get(`/categories`)
-      .then(response => response.data)
-      .then(
-        data => dispatch(fetchCategories(data.categories)),
-        error => console.error(error)
-      )
-}
-
-function fetchCategories (data) {
-  return {
-    type: FETCH_CATEGORIES, 
-    data
-  }
-}
+export const fetchCategories = () => dispatch => {
+  api
+    .get('/categories')
+    .then(res => dispatch(loadCategories(res.data)))
+} 
+export const loadCategories = (data) => ({
+  type: LOAD_CATEGORIES,
+  payload: data
+})

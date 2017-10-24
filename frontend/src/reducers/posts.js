@@ -1,15 +1,18 @@
-import {
-  FETCH_POSTS,
-  FETCH_CATEGORY_POSTS
+import { 
+  LOAD_POSTS, 
+  LOAD_CATEGORY_POSTS 
 } from '../actions/posts'
 
-function posts(state = [], action) {
+const posts = (state = [], action) => {
   switch(action.type) {
-    case FETCH_POSTS:
-      return action.data
-    case FETCH_CATEGORY_POSTS:
-      return action.data
-    default:
+    case LOAD_POSTS :
+      const posts = action.payload
+      console.log(action)
+      return [...posts]
+    case LOAD_CATEGORY_POSTS :
+      const { category } = action.payload
+      return posts.filter( post => ( post.category === category ) )
+    default :
       return state
   }
 }
