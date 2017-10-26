@@ -6,12 +6,12 @@ import { fetchPosts, fetchCategoryPosts } from '../actions/posts'
 class PostList extends Component {
 
   componentWillMount() {
-    this.props.fetchPosts()
-    // if (this.props.match.params.category) {
-		// 	this.props.fetchCategoryPosts(this.props.match.params.category);
-		// } else {
-		// 	this.props.fetchPosts();
-		// }
+    const { filter } = this.props
+    if (filter) {
+      this.props.fetchCategoryPosts(filter)
+    } else {
+      this.props.fetchPosts()
+    }
   }
 
   renderPosts () {

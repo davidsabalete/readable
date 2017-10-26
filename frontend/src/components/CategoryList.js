@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 class CategoryList extends Component {
 
-	componentWillMount() {
+	componentDidMount() {
 		this.props.fetchCategories()
 	}
 
@@ -39,7 +39,7 @@ class CategoryList extends Component {
 						All
 					</Link>
 				</li>
-				{ this.renderCategories() }
+				{this.renderCategories()}
 			</ul>
 		)
 	}
@@ -49,6 +49,6 @@ const mapStateToProps = (state) => {
 	const { categories } = state
 	return { categories }
 }
-export default connect(mapStateToProps, { 
-	fetchCategories 
+export default connect(mapStateToProps, {
+	fetchCategories
 })(CategoryList)

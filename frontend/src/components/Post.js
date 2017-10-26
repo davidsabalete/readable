@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 class Post extends Component {
   render() {
     const { post } = this.props
-    const showPost = !post.deleted
 
     if (post.deleted) return <div />
 
