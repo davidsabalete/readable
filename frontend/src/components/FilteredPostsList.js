@@ -8,7 +8,11 @@ class FilteredPostsList extends Component {
     posts: []
 	}
 	
-	componentDidMount() {
+	componentWillMount() {
+		const { category } = this.props.match.params
+		if (category) {
+			console.log(category)
+		}
 		fetchCategoryPosts()
 			.then(data => {
 				this.setState({ posts: data })

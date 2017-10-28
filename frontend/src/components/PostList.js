@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-// import { withRouter } from 'react-router'
 import Post from './Post'
-import { connect } from 'react-redux'
 import { fetchPosts } from '../actions/posts'
 
 class PostList extends Component {
@@ -18,18 +16,21 @@ class PostList extends Component {
   }
 
   renderPosts() {
-    return this.state.posts.map(post => (
-      <Post key={post.id} post={post} />
-    ))
+    const { category } = this.props.match.params
+    if (category) {
+      return this.state.posts
+        .filter(post => post.category === category)
+        .map(post => (
+          <Post key={post.id} post={post} />
+        ))
+    } else {
+      return this.state.posts.map(post => (
+        <Post key={post.id} post={post} />
+      ))
+    }
   }
 
   render() {
-    const { category } = this.props.match.params
-    if (category) {
-      return (
-        <div>{category}</div>
-      )
-    }
     return (
       <div>
         <div className="post-list">
@@ -48,9 +49,9 @@ class PostList extends Component {
 //   fetchCategoryPosts 
 // })(PostList))
 
-const mapStateToProps = (state, { params }) => ({})
-const mapDispatchToProps = {
-  fetchPosts
-}
-export default connect(mapStateToProps, mapDispatchToProps)(PostList)
-//export default PostList
+// const mapStateToProps = (state, { params }) => ({})
+// const mapDispatchToProps = {
+//   fetchPosts
+// }
+// export default connect(mapStateToProps, mapDispatchToProps)(PostList)
+export default PostList
