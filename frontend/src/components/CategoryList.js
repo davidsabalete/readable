@@ -16,7 +16,7 @@ class CategoryList extends Component {
 				return (
 					<li key={category.path} className="nav-item text-capitalize">
 						<Link
-							to={'/' + category.name}
+							to={'/' + category.name + '/posts'}
 							className="nav-link"
 						>
 							{category.name}
