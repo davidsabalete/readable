@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import PostList from './PostList'
-import FilteredPostsList from './FilteredPostsList'
 import Header from './Header'
 import Footer from './Footer'
 
