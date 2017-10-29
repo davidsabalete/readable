@@ -16,7 +16,7 @@ class CategoryList extends Component {
 				return (
 					<li key={category.path} className="nav-item text-capitalize">
 						<Link
-							to={'/' + category.name + '/posts'}
+							to={'/' + category.name}
 							className="nav-link"
 						>
 							{category.name}
@@ -29,8 +29,10 @@ class CategoryList extends Component {
 	}
 
 	render() {
+		// console.log('Props', this.props)
 		return (
 			<ul className="nav justify-content-center">
+				<li className="nav-item nav-link">Show: </li>
 				<li key={'/'} className="nav-item text-capitalize">
 					<Link
 						to={'/'}
@@ -46,9 +48,9 @@ class CategoryList extends Component {
 }
 
 const mapStateToProps = (state) => {
-	const { categories } = state
-	return { categories }
+	return { categories: state.categories }
 }
-export default connect(mapStateToProps, {
-	fetchCategories
-})(CategoryList)
+export default connect(
+	mapStateToProps,
+	{ fetchCategories }
+)(CategoryList)

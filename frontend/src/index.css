@@ -18,6 +18,9 @@ footer {
   background-color: #f9f5d2;
   text-align: center;
 }
+.category-title {
+  margin-top: 2em;
+}
 .links-categories a {
   margin: 1em; 
 }
@@ -36,6 +39,6 @@ footer {
   color: pink;
 }
 .card { 
-  margin: 2em;
+  margin: 2em 0em;
   padding: 2em 1em 0em 1em;
 }

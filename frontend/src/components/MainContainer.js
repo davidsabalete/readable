@@ -10,8 +10,8 @@ class MainContainer extends Component {
 			<div className="App">
 				<Header />
 				<Switch>
-					<Route exact path={'/'} component={PostList} />
-					<Route path={'/:category/posts'} component={PostList} />
+					<Route exact path="/" component={PostList} />
+					<Route exact path="/:category" component={props => <PostList {...props}/>} />
 				</Switch>
 				<Footer />
 			</div>

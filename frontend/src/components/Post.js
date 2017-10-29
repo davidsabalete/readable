@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Post extends Component {
   render() {
@@ -15,7 +16,7 @@ class Post extends Component {
           </h6>
           <div className="card-text">{post.body}</div>
           <p className="post-details">
-            category: <a href="/">{post.category}</a> | votes: {post.voteScore}{" "}
+            category: <Link to={'/' + post.category }>{post.category}</Link> | votes: {post.voteScore}{" "}
             <i className="fa fa-thumbs-o-up" aria-hidden="true" />{" "}
             <i className="fa fa-thumbs-o-down" aria-hidden="true" />
           </p>

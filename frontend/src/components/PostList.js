@@ -1,39 +1,42 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Post from './Post'
-import { fetchPosts } from '../actions/posts'
+import { fetchPosts, fetchCategoryPosts } from '../actions/posts'
 
 class PostList extends Component {
 
   state = {
-    posts: []
+    posts: [],
+    category: ''
   }
 
-  componentWillMount() {
-    fetchPosts()
-      .then(data => {
-        this.setState({ posts: data })
-      })
-  }
-
-  renderPosts() {
+  componentDidMount() {
     const { category } = this.props.match.params
+    console.log(category)
     if (category) {
-      return this.state.posts
-        .filter(post => post.category === category)
-        .map(post => (
-          <Post key={post.id} post={post} />
-        ))
+      this.props.fetchCategoryPosts(category)
     } else {
-      return this.state.posts.map(post => (
-        <Post key={post.id} post={post} />
-      ))
+      this.props.fetchPosts()
     }
   }
 
+  renderPosts() {
+    if (this.props.posts.length === 0) {
+      return <div>No posts for this category</div>
+    }
+    return this.props.posts.map(post => (
+      <Post key={post.id} post={post} />
+    ))
+  }
+
   render() {
+    const { category } = this.props.match.params
     return (
-      <div>
-        <div className="post-list">
+      <div className="container">
+        <div className="category-title">
+          <h4>{category ? `Posts of category: ${category}` : 'All Posts'}</h4>
+        </div>
+        <div>
           {this.renderPosts()}
         </div>
       </div>
@@ -41,17 +44,10 @@ class PostList extends Component {
   }
 }
 
-// const mapStateToProps = (state, { params }) => ({
-//   posts: getVisiblePosts(state.posts, params.category || '')
-// })
-// export default withRouter(connect(mapStateToProps, { 
-//   fetchPosts, 
-//   fetchCategoryPosts 
-// })(PostList))
-
-// const mapStateToProps = (state, { params }) => ({})
-// const mapDispatchToProps = {
-//   fetchPosts
-// }
-// export default connect(mapStateToProps, mapDispatchToProps)(PostList)
-export default PostList
+const mapStateToProps = (state) => ({
+  posts: state.posts,
+})
+export default connect(mapStateToProps, {
+  fetchPosts,
+  fetchCategoryPosts
+})(PostList)
