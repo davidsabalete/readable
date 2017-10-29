@@ -15,10 +15,7 @@ class CategoryList extends Component {
 			return categories.map(category => {
 				return (
 					<li key={category.path} className="nav-item text-capitalize">
-						<Link
-							to={'/' + category.name}
-							className="nav-link"
-						>
+						<Link to={'/' + category.name + '/posts'}	className="nav-link">
 							{category.name}
 						</Link>
 					</li>
@@ -34,10 +31,7 @@ class CategoryList extends Component {
 			<ul className="nav justify-content-center">
 				<li className="nav-item nav-link">Show: </li>
 				<li key={'/'} className="nav-item text-capitalize">
-					<Link
-						to={'/'}
-						className="nav-link"
-					>
+					<Link	to={'/'} className="nav-link">
 						All
 					</Link>
 				</li>

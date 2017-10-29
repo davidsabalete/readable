@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import PostList from './PostList'
 import Header from './Header'
+import PostList from './PostList'
 import Footer from './Footer'
+import CreatePost from './CreatePost'
 
 class MainContainer extends Component {
 	render() {
@@ -11,7 +12,8 @@ class MainContainer extends Component {
 				<Header />
 				<Switch>
 					<Route exact path="/" component={PostList} />
-					<Route exact path="/:category" component={props => <PostList {...props}/>} />
+					<Route exact path="/:category/posts" component={props => <PostList {...props}/>} />
+					<Route exact path="/create/post" component={CreatePost} />
 				</Switch>
 				<Footer />
 			</div>

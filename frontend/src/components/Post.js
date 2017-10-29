@@ -16,7 +16,8 @@ class Post extends Component {
           </h6>
           <div className="card-text">{post.body}</div>
           <p className="post-details">
-            category: <Link to={'/' + post.category }>{post.category}</Link> | votes: {post.voteScore}{" "}
+            <Link to={'/' + post.category }>
+              <span className="badge badge-secondary">{post.category}</span></Link> | votes: {post.voteScore}{" "}
             <i className="fa fa-thumbs-o-up" aria-hidden="true" />{" "}
             <i className="fa fa-thumbs-o-down" aria-hidden="true" />
           </p>

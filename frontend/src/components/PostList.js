@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Post from './Post'
 import { fetchPosts, fetchCategoryPosts } from '../actions/posts'
+import { Link } from 'react-router-dom'
+import Post from './Post'
+
 
 class PostList extends Component {
 
@@ -12,7 +14,6 @@ class PostList extends Component {
 
   componentDidMount() {
     const { category } = this.props.match.params
-    console.log(category)
     if (category) {
       this.props.fetchCategoryPosts(category)
     } else {
@@ -33,6 +34,7 @@ class PostList extends Component {
     const { category } = this.props.match.params
     return (
       <div className="container">
+        <Link to="/create/post" className="btn btn-primary" style={{float: 'right'}}>New Post</Link>
         <div className="category-title">
           <h4>{category ? `Posts of category: ${category}` : 'All Posts'}</h4>
         </div>
