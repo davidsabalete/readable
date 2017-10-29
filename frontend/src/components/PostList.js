@@ -13,6 +13,12 @@ class PostList extends Component {
   }
 
   componentDidMount() {
+    this.fetchData()
+  }
+
+  
+
+  fetchData() {
     const { category } = this.props.match.params
     if (category) {
       this.props.fetchCategoryPosts(category)
@@ -22,9 +28,12 @@ class PostList extends Component {
   }
 
   renderPosts() {
-    if (this.props.posts.length === 0) {
+    console.log(this.props)
+    const {posts} = this.props
+    if (!posts.length) {
       return <div>No posts for this category</div>
     }
+    
     return this.props.posts.map(post => (
       <Post key={post.id} post={post} />
     ))
@@ -35,7 +44,7 @@ class PostList extends Component {
     return (
       <div className="container">
         <Link to="/create/post" className="btn btn-primary" style={{float: 'right'}}>New Post</Link>
-        <div className="category-title">
+        <div className="title-view">
           <h4>{category ? `Posts of category: ${category}` : 'All Posts'}</h4>
         </div>
         <div>

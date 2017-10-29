@@ -4,6 +4,7 @@ import Header from './Header'
 import PostList from './PostList'
 import Footer from './Footer'
 import CreatePost from './CreatePost'
+import DetailPost from './DetailPost'
 
 class MainContainer extends Component {
 	render() {
@@ -12,8 +13,9 @@ class MainContainer extends Component {
 				<Header />
 				<Switch>
 					<Route exact path="/" component={PostList} />
-					<Route exact path="/:category/posts" component={props => <PostList {...props}/>} />
+					<Route exact path="/:category/posts" component={props => <PostList {...props} />} />
 					<Route exact path="/create/post" component={CreatePost} />
+					<Route exact path="/posts/:id" component={props => <DetailPost {...props} />} />
 				</Switch>
 				<Footer />
 			</div>

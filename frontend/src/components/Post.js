@@ -10,16 +10,18 @@ class Post extends Component {
     return (
       <div className="card">
         <div className="card-block">
-          <h4 className="card-title">{post.title}</h4>
+          <Link to={'/posts/' + post.id} className="card-title"><h4>{post.title}</h4></Link>
           <h6 className="card-subtitle mb-2 text-muted">
             by {post.author} at {new Date(post.timestamp).toString().substr(0,16)}
           </h6>
           <div className="card-text">{post.body}</div>
           <p className="post-details">
             <Link to={'/' + post.category }>
-              <span className="badge badge-secondary">{post.category}</span></Link> | votes: {post.voteScore}{" "}
-            <i className="fa fa-thumbs-o-up" aria-hidden="true" />{" "}
-            <i className="fa fa-thumbs-o-down" aria-hidden="true" />
+              <span className="badge badge-pill badge-secondary">{post.category}</span></Link>{" "}
+              <span className="badge badge-pill badge-primary">{post.voteScore} votes </span>
+              
+            {/*<i className="fa fa-thumbs-o-up" aria-hidden="true" />{" "}
+            <i className="fa fa-thumbs-o-down" aria-hidden="true" />*/}
           </p>
           <p>{post.id}</p>
         </div>

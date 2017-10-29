@@ -14,29 +14,33 @@ class CategoryList extends Component {
 		if (categories) {
 			return categories.map(category => {
 				return (
-					<li key={category.path} className="nav-item text-capitalize">
-						<Link to={'/' + category.name + '/posts'}	className="nav-link">
-							{category.name}
-						</Link>
-					</li>
+					<Link 
+						key={category.path} 
+						to={'/' + category.name + '/posts'} 
+						className="nav-item nav-link">
+						{category.name}
+					</Link>
 				)
 			})
 		}
-		return <div>Fetching categories...</div>
 	}
 
 	render() {
-		// console.log('Props', this.props)
+		
+		const { categories } = this.props
+		if (!categories) {
+			return <div>Fetching categories...</div>
+		}
 		return (
-			<ul className="nav justify-content-center">
-				<li className="nav-item nav-link">Show: </li>
-				<li key={'/'} className="nav-item text-capitalize">
-					<Link	to={'/'} className="nav-link">
-						All
-					</Link>
-				</li>
+			<div className="navbar-nav mr-auto">
+				<Link 
+					key={'/'} 
+					to={'/'} 
+					className="nav-item nav-link">
+					All Posts
+				</Link>
 				{this.renderCategories()}
-			</ul>
+			</div>
 		)
 	}
 }
