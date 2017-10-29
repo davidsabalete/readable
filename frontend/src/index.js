@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
+import 'font-awesome/css/font-awesome.min.css'
 import registerServiceWorker from './registerServiceWorker'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
