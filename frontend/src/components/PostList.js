@@ -16,8 +16,6 @@ class PostList extends Component {
     this.fetchData()
   }
 
-  
-
   fetchData() {
     const { category } = this.props.match.params
     if (category) {
@@ -28,7 +26,7 @@ class PostList extends Component {
   }
 
   renderPosts() {
-    console.log(this.props)
+    // console.log(this.props)
     const {posts} = this.props
     if (!posts.length) {
       return <div>No posts for this category</div>

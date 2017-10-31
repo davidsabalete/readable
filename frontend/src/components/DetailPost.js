@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchPost } from '../actions/posts'
+import { fetchPost } from '../actions/post'
 
 class DetailPost extends Component {
 
 	componentWillMount() {
-		this.props.fetchPost(this.props.match.params.id)
+		fetchPost(this.props.match.params.id)
 	}
 
 	render() {
+		const {id} = this.props.match.params
+		console.log(id)
+		console.log(this.state)
 		const { post } = this.props
 		if (!post) {
 			return (
@@ -44,7 +47,11 @@ class DetailPost extends Component {
 		// )
 	}
 }
-const mapStateToProps = (state, ownProps) => ({
-	post: state.posts[ownProps.match.params.id]
-})
+const mapStateToProps = (state, ownProps) => {
+	// console.log(ownProps.match.params.id)
+	return {
+		posts: state.posts,
+		post: state.posts[ownProps.match.params.id]
+	}
+}
 export default connect(mapStateToProps, { fetchPost })(DetailPost)
