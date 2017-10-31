@@ -7,56 +7,56 @@ import Post from './Post'
 
 class PostList extends Component {
 
-  state = {
-    posts: [],
-    category: ''
-  }
+	state = {
+		posts: [],
+		category: ''
+	}
 
-  componentDidMount() {
-    this.fetchData()
-  }
+	componentDidMount() {
+		this.fetchData()
+	}
 
-  fetchData() {
-    const { category } = this.props.match.params
-    if (category) {
-      this.props.fetchCategoryPosts(category)
-    } else {
-      this.props.fetchPosts()
-    }
-  }
+	fetchData() {
+		const { category } = this.props.match.params
+		if (category) {
+			this.props.fetchCategoryPosts(category)
+		} else {
+			this.props.fetchPosts()
+		}
+	}
 
-  renderPosts() {
-    // console.log(this.props)
-    const {posts} = this.props
-    if (!posts.length) {
-      return <div>No posts for this category</div>
-    }
-    
-    return this.props.posts.map(post => (
-      <Post key={post.id} post={post} />
-    ))
-  }
+	renderPosts() {
+		// console.log(this.props)
+		const { posts } = this.props
+		if (!posts.length) {
+			return <div>No posts for this category</div>
+		}
 
-  render() {
-    const { category } = this.props.match.params
-    return (
-      <div className="container">
-        <Link to="/create/post" className="btn btn-primary" style={{float: 'right'}}>New Post</Link>
-        <div className="title-view">
-          <h4>{category ? `Posts of category: ${category}` : 'All Posts'}</h4>
-        </div>
-        <div>
-          {this.renderPosts()}
-        </div>
-      </div>
-    )
-  }
+		return this.props.posts.map(post => (
+			<Post key={post.id} post={post} />
+		))
+	}
+
+	render() {
+		const { category } = this.props.match.params
+		return (
+			<div className="container">
+				<Link to="/create/post" className="btn btn-primary" style={{ float: 'right' }}>New Post</Link>
+				<div className="title-view">
+					<h4>{category ? `Posts of category: ${category}` : 'All Posts'}</h4>
+				</div>
+				<div>
+					{this.renderPosts()}
+				</div>
+			</div>
+		)
+	}
 }
 
 const mapStateToProps = (state) => ({
-  posts: state.posts,
+	posts: state.posts,
 })
 export default connect(mapStateToProps, {
-  fetchPosts,
-  fetchCategoryPosts
+	fetchPosts,
+	fetchCategoryPosts
 })(PostList)

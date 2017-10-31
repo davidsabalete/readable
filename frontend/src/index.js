@@ -11,15 +11,15 @@ import reducers from './reducers'
 import MainContainer from './components/MainContainer'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducers, composeEnhancers(applyMiddleware( thunk )))
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
-  <Provider store={store} >
-	  <BrowserRouter>
-      <MainContainer />
-    </BrowserRouter>
-  </Provider>, 
-  document.getElementById('root')
+	<Provider store={store} >
+		<BrowserRouter>
+			<MainContainer />
+		</BrowserRouter>
+	</Provider>,
+	document.getElementById('root')
 )
 
 registerServiceWorker()

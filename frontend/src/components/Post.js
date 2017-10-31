@@ -23,7 +23,7 @@ class Post extends Component {
             {/*<i className="fa fa-thumbs-o-up" aria-hidden="true" />{" "}
             <i className="fa fa-thumbs-o-down" aria-hidden="true" />*/}
           </p>
-          <p>{post.id}</p>
+          {/*<p>{post.id}</p>*/}
         </div>
       </div>
     )

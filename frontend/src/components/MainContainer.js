@@ -13,9 +13,9 @@ class MainContainer extends Component {
 				<Header />
 				<Switch>
 					<Route exact path="/" component={PostList} />
+					<Route exact path="/posts/:id" component={props => <DetailPost {...props} />} />
 					<Route exact path="/:category/posts" component={props => <PostList {...props} />} />
 					<Route exact path="/create/post" component={CreatePost} />
-					<Route exact path="/posts/:id" component={props => <DetailPost {...props} />} />
 				</Switch>
 				<Footer />
 			</div>

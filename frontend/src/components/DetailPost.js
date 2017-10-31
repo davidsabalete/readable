@@ -5,7 +5,7 @@ import { fetchPost } from '../actions/post'
 
 class DetailPost extends Component {
 
-	componentWillMount() {
+	componentDidMount() {
 		fetchPost(this.props.match.params.id)
 	}
 
