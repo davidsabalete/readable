@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchCategories } from '../actions/categories'
+import { fetchCategoriesAsync } from '../actions/categories'
 import { Link } from 'react-router-dom'
 
 class CategoryList extends Component {
 
 	componentDidMount() {
-		this.props.fetchCategories()
+		this.props.fetchCategoriesAsync()
 	}
 
 	renderCategories() {
@@ -15,8 +15,8 @@ class CategoryList extends Component {
 			return categories.map(category => {
 				return (
 					<Link 
-						key={category.path} 
-						to={'/' + category.name + '/posts'} 
+						key={category.name} 
+						to={'/' + category.path} 
 						className="nav-item nav-link">
 						{category.name}
 					</Link>
@@ -50,5 +50,5 @@ const mapStateToProps = (state) => {
 }
 export default connect(
 	mapStateToProps,
-	{ fetchCategories }
+	{ fetchCategoriesAsync }
 )(CategoryList)

@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchPost } from '../actions/post'
+import { fetchPostAsync, votePostAsync } from '../actions/post'
 
 class DetailPost extends Component {
 
-	componentDidMount() {
-		fetchPost(this.props.match.params.id)
+	componentWillMount() {
+		this.props.fetchPostAsync(this.props.match.params.id)
+	}
+
+	vote(voteValue) {
+		const { id } = this.props.match.params
+		this.props.votePostAsync(id, voteValue)
 	}
 
 	render() {
-		const {id} = this.props.match.params
-		console.log(id)
-		console.log(this.state)
 		const { post } = this.props
 		if (!post) {
 			return (
@@ -23,35 +25,27 @@ class DetailPost extends Component {
 		}
 
 		return (
-			<div>Detail Post {JSON.stringify(this.state)}</div>
+			<div className="container">
+				<article>
+					<h4>{post.title}</h4>
+					<p className="">
+						by {post.author} at {new Date(post.timestamp).toString().substr(0, 16)}
+					</p>
+					<p>{post.body}</p>
+					<Link to={'/' + post.category}>
+						<span className="badge badge-pill badge-secondary">{post.category}</span></Link>{" "}
+					<span className="badge badge-pill badge-primary">{post.voteScore} votes </span>{" "}
+					<i className="fa fa-thumbs-o-up" aria-hidden="true" onClick={() => this.vote('upVote')} />{" "}
+					<i className="fa fa-thumbs-o-down" aria-hidden="true" onClick={() => this.vote('downVote')} />
+				</article>
+				{/* <p>{post.id}</p> */}
+			</div>
 		)
-		// return (
-		// 	<div className="card">
-		//     <div className="card-block">
-		//       <Link to={'/posts/' + post.id} className="card-title"><h4>{post.title}</h4></Link>
-		//       <h6 className="card-subtitle mb-2 text-muted">
-		//         by {post.author} at {new Date(post.timestamp).toString().substr(0,16)}
-		//       </h6>
-		//       <div className="card-text">{post.body}</div>
-		//       <p className="post-details">
-		//         <Link to={'/' + post.category }>
-		//           <span className="badge badge-pill badge-secondary">{post.category}</span></Link>{" "}
-		//           <span className="badge badge-pill badge-primary">{post.voteScore} votes </span>
+	}
+}
 
-		//         {/*<i className="fa fa-thumbs-o-up" aria-hidden="true" />{" "}
-		//         <i className="fa fa-thumbs-o-down" aria-hidden="true" />*/}
-		//       </p>
-		//       <p>{post.id}</p>
-		//     </div>
-		//   </div>
-		// )
-	}
-}
-const mapStateToProps = (state, ownProps) => {
-	// console.log(ownProps.match.params.id)
-	return {
-		posts: state.posts,
-		post: state.posts[ownProps.match.params.id]
-	}
-}
-export default connect(mapStateToProps, { fetchPost })(DetailPost)
+const mapStateToProps = (state, ownProps) => ({ post: state.post })
+export default connect(mapStateToProps, {
+	fetchPostAsync,
+	votePostAsync
+})(DetailPost)

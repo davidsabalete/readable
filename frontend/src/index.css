@@ -18,6 +18,9 @@ footer {
   background-color: #f9f5d2;
   text-align: center;
 }
+article {
+  padding: 2em;
+}
 .title-view {
   margin-top: 2em;
 }
@@ -40,7 +43,7 @@ footer {
 }
 .card { 
   margin: 2em 0em;
-  padding: 2em 1em 0em 1em;
+  padding: 1em;
 }
 .navbar-nav {
   flex-direction: row;

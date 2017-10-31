@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchPosts, fetchCategoryPosts } from '../actions/posts'
+import { fetchPostsAsync, fetchCategoryPostsAsync } from '../actions/posts'
 import { Link } from 'react-router-dom'
 import Post from './Post'
 
@@ -19,9 +19,9 @@ class PostList extends Component {
 	fetchData() {
 		const { category } = this.props.match.params
 		if (category) {
-			this.props.fetchCategoryPosts(category)
+			this.props.fetchCategoryPostsAsync(category)
 		} else {
-			this.props.fetchPosts()
+			this.props.fetchPostsAsync()
 		}
 	}
 
@@ -57,6 +57,6 @@ const mapStateToProps = (state) => ({
 	posts: state.posts,
 })
 export default connect(mapStateToProps, {
-	fetchPosts,
-	fetchCategoryPosts
+	fetchPostsAsync,
+	fetchCategoryPostsAsync
 })(PostList)
