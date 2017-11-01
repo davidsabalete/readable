@@ -8,6 +8,7 @@ class Header extends Component {
       <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#e3f2fd" }}>
         <Link className="navbar-brand" to="/">READABLE Project</Link>
         <CategoryList />
+        <Link to="/create/post" className="btn btn-primary" style={{ float: 'right' }}>New Post</Link>
       </nav>
     )
   }

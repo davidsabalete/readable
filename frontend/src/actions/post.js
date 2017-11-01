@@ -16,11 +16,10 @@ const loadPost = (post) => ({
 export const votePostAsync = (id, vote) => dispatch => {
 	api.post(`/posts/${id}`, { option: vote })
 		.then(res => {
-			console.log(res)
-			dispatch(loadPost(res.data))
+			dispatch(votePost(res.data))
 		})
 }
-const votePost = (vote) => ({
+const votePost = (post) => ({
 	type: VOTE_POST,
-	vote
+	post
 })

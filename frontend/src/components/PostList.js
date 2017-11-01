@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchPostsAsync, fetchCategoryPostsAsync } from '../actions/posts'
 import { Link } from 'react-router-dom'
+import Header from './Header'
+import Footer from './Footer'
 import Post from './Post'
 
 
@@ -40,14 +42,12 @@ class PostList extends Component {
 	render() {
 		const { category } = this.props.match.params
 		return (
-			<div className="container">
-				<Link to="/create/post" className="btn btn-primary" style={{ float: 'right' }}>New Post</Link>
-				<div className="title-view">
-					<h4>{category ? `Posts of category: ${category}` : 'All Posts'}</h4>
-				</div>
-				<div>
+			<div className="App">
+				<Header />
+				<div className="container">
 					{this.renderPosts()}
 				</div>
+				<Footer />
 			</div>
 		)
 	}

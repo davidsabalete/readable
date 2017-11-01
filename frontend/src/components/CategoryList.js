@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchCategoriesAsync } from '../actions/categories'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 class CategoryList extends Component {
 
@@ -11,34 +11,37 @@ class CategoryList extends Component {
 
 	renderCategories() {
 		const { categories } = this.props
+		
 		if (categories) {
 			return categories.map(category => {
 				return (
-					<Link 
+					<NavLink 
 						key={category.name} 
 						to={'/' + category.path} 
 						className="nav-item nav-link">
-						{category.name}
-					</Link>
+						{category.name.toUpperCase()}
+					</NavLink>
 				)
 			})
 		}
 	}
 
 	render() {
-		
 		const { categories } = this.props
+
 		if (!categories) {
 			return <div>Fetching categories...</div>
 		}
+		
 		return (
 			<div className="navbar-nav mr-auto">
-				<Link 
+				<NavLink
+					exact 
 					key={'/'} 
 					to={'/'} 
 					className="nav-item nav-link">
-					All Posts
-				</Link>
+					{'All Posts'.toUpperCase()}
+				</NavLink>
 				{this.renderCategories()}
 			</div>
 		)
