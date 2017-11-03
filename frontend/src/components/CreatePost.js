@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { createPostAsync } from '../actions/post'
+
 import Header from './Header'
+import PostForm from './PostForm'
 import Footer from './Footer'
 
-class CreatePost extends Component {
 
-	onFormSubmit(e) {
-		e.preventDefault()
-		alert('jurl')
+class CreatePost extends Component {
+	submit = (values) => {
+		this.props.createPostAsync(values, () => {
+			this.props.history.push('/')
+		})
 	}
 	render() {
 		return (
@@ -17,26 +21,7 @@ class CreatePost extends Component {
 					<div className="title-view">
 						<h4>Create a new Post</h4>
 					</div>
-					<form onSubmit={this.onFormSubmit}>
-						<div className="form-group">
-							<label>Title</label>
-							<input type="text" className="form-control" id="title" placeholder="Insert post title" />
-						</div>
-						<div className="form-group">
-							<label>Content</label>
-							<textarea id="content" className="form-control" placeholder="Your post..."></textarea>
-						</div>
-						<div className="form-group">
-							<label>Category </label>{' '}
-							<select className="form-control" id="category">
-								<option>redux</option>
-								<option>react</option>
-								<option>udacity</option>
-							</select>
-						</div>
-						<button type="submit" className="btn btn-primary">Save</button>{' '}
-						<Link to={'/'} className="btn btn-danger">Cancel</Link>
-					</form>
+					<PostForm onSubmit={this.submit} />
 				</div>
 				<Footer />
 			</div>
@@ -44,4 +29,4 @@ class CreatePost extends Component {
 	}
 }
 
-export default CreatePost
+export default connect(null, { createPostAsync })(CreatePost)

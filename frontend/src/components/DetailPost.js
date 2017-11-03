@@ -30,19 +30,20 @@ class DetailPost extends Component {
 			<div className="App">
 				<Header />
 				<div className="container">
-					<article>
+					<article className="card">
 						<h4>{post.title}</h4>
 						<p className="">
 							by {post.author} at {new Date(post.timestamp).toString().substr(0, 16)}
 						</p>
 						<p>{post.body}</p>
-						<Link to={'/' + post.category}>
-							<span className="badge badge-pill badge-secondary">{post.category}</span></Link>{" "}
-						<span className="badge badge-pill badge-primary">{post.voteScore} votes </span>{" "}
-						<i className="fa fa-thumbs-o-up" aria-hidden="true" onClick={() => this.vote('upVote')} />{" "}
-						<i className="fa fa-thumbs-o-down" aria-hidden="true" onClick={() => this.vote('downVote')} />
+						<p>
+							<Link to={'/' + post.category}>
+								<span className="badge badge-pill badge-secondary">{post.category}</span></Link>{" "}
+							<span className="badge badge-pill badge-primary">{post.voteScore} votes </span>{" "}
+							<i className="fa fa-thumbs-o-up" aria-hidden="true" onClick={() => this.vote('upVote')} />{" "}
+							<i className="fa fa-thumbs-o-down" aria-hidden="true" onClick={() => this.vote('downVote')} />
+						</p>
 					</article>
-					{/* <p>{post.id}</p> */}
 				</div>
 				<Footer />
 			</div>

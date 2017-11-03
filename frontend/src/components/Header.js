@@ -5,7 +5,7 @@ import CategoryList from './CategoryList'
 class Header extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#e3f2fd" }}>
+      <nav className="navbar navbar-expand-lg navbar-light">
         <Link className="navbar-brand" to="/">READABLE Project</Link>
         <CategoryList />
         <Link to="/create/post" className="btn btn-primary" style={{ float: 'right' }}>New Post</Link>

@@ -4,7 +4,6 @@ body {
   font-family: sans-serif;
 }
 header {
-  background-color: #f9f5d2;
   margin-top: 0;
   top: 0;
   padding: 1em 3em;
@@ -12,10 +11,11 @@ header {
 }
 footer {
   position: absolute;
+  padding: 0.5em;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgb(227, 242, 253);
+  background-color: #e3f2fd;
   text-align: center;
 }
 article {
@@ -50,4 +50,10 @@ article {
 }
 .nav-item {
   margin-left: 2em;
+}
+.navbar-light {
+  background-color: #e3f2fd;
+}
+.invalid {
+  color: rgb(222, 0, 0);
 }
