@@ -44,6 +44,11 @@ article {
 .card { 
   margin: 2em 0em;
   padding: 1em;
+  display: block;
+}
+.card h4 {
+  color: #0000ff;
+  font-weight: bold;
 }
 .navbar-nav {
   flex-direction: row;
@@ -60,4 +65,10 @@ article {
 
 .order-controls {
   margin: 1em;
+}
+.action-buttons {
+  float: right;
+}
+.action-buttons a, .action-buttons button {
+  margin-left: 0.5em;
 }
