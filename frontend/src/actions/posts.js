@@ -2,6 +2,7 @@ import { api } from '../utils/api'
 
 export const LOAD_POSTS = 'LOAD_POSTS'
 export const LOAD_CATEGORY_POSTS = 'LOAD_CATEGORY_POSTS'
+export const SORT_POSTS = 'SORT_POSTS'
 
 
 
@@ -23,3 +24,8 @@ const loadCategoryPosts = (posts) => ({
 	posts
 })
 
+export const sortBy = (sortByField, sortDirection) => ({
+	type: SORT_POSTS,
+	sortByField,
+	sortDirection
+})

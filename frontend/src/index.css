@@ -10,7 +10,7 @@ header {
   text-align: center;
 }
 footer {
-  position: absolute;
+  /* position: absolute; */
   padding: 0.5em;
   right: 0;
   bottom: 0;
@@ -56,4 +56,8 @@ article {
 }
 .invalid {
   color: rgb(222, 0, 0);
+}
+
+.order-controls {
+  margin: 1em;
 }
