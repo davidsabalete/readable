@@ -31,7 +31,7 @@ class PostList extends Component {
 	renderPosts() {
 		const { posts } = this.props
 		if (!posts.length) {
-			return <div>No posts for this category</div>
+			return <div>There are not posts for this category</div>
 		}
 		const orderedPosts = orderBy(posts, [this.state.sortByField], [this.state.sortDirection])
 		return orderedPosts.map(post => (

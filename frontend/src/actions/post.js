@@ -4,6 +4,7 @@ import { uuid } from '../utils/uuid'
 export const LOAD_POST = 'LOAD_POST'
 export const CREATE_POST = 'CREATE_POST'
 export const VOTE_POST = 'VOTE_POST'
+export const DELETE_POST = 'DELETE_POST'
 
 
 export const fetchPostAsync = (id) => dispatch => {
@@ -47,4 +48,16 @@ export const votePostAsync = (id, vote) => dispatch => {
 const votePost = (post) => ({
 	type: VOTE_POST,
 	post
+})
+
+export const deletePostAsync = (id, callback) => dispatch => {
+	api.delete(`/posts/${id}`)
+		.then(() => {
+			callback()
+			dispatch(deletePost(id))
+		})
+}
+const deletePost = (id) => ({
+	type: DELETE_POST,
+	id
 })

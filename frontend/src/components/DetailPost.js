@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchPostAsync, votePostAsync } from '../actions/post'
 import Header from './Header'
 import Footer from './Footer'
+import ActionButtons from './ActionButtons'
 
 class DetailPost extends Component {
 
@@ -31,6 +32,7 @@ class DetailPost extends Component {
 				<Header />
 				<div className="container">
 					<article className="card">
+						<ActionButtons post={post} />
 						<h4>{post.title}</h4>
 						<p className="">
 							by {post.author} at {new Date(post.timestamp).toString().substr(0, 16)}

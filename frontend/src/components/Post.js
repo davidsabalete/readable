@@ -1,23 +1,26 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import ActionButtons from './ActionButtons'
 
 class Post extends Component {
   render() {
     const { post } = this.props
+    const { id, category, title, timestamp, voteScore } = post
 
     if (post.deleted) return <div />
 
     return (
       <div className="card">
         <div className="card-block">
-          <Link to={'/' + post.category + '/' + post.id} className="card-title"><h4>{post.title}</h4></Link>
-          {new Date(post.timestamp).toString().substr(0, 16)}
-          <Link to={'/' + post.category}>
-            <span className="badge badge-pill badge-secondary">{post.category}</span>
+          <ActionButtons post={post} />
+          <Link to={`/${category}/${id}`} className="card-title"><h4>{title}</h4></Link>
+          {new Date(timestamp).toString().substr(0, 16)}
+          <Link to={`/${category}`}>
+            <span className="badge badge-pill badge-secondary">{category}</span>
           </Link>{" "}
-          <span className="badge badge-pill badge-primary">{post.voteScore} votes </span>
+          <span className="badge badge-pill badge-primary">{voteScore} votes </span>
         </div>
-      </div>
+      </div >
     )
   }
 }
