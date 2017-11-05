@@ -16,10 +16,10 @@ class PostForm extends Component {
         if (field.input.name === 'body') {
             return (
                 <div className={'form-group ' + className}>
-                <label>{field.label}</label>
-                <textarea type="text" {...field.input} className="form-control" ></textarea>
-                <div className="invalid">{touched ? error : ''}</div>
-            </div>
+                    <label>{field.label}</label>
+                    <textarea type="text" {...field.input} className="form-control">{field.input.value}</textarea>
+                    <div className="invalid">{touched ? error : ''}</div>
+                </div>
             )
         } else {
             return (
@@ -50,7 +50,7 @@ class PostForm extends Component {
                         </option>
                     ))}
                 </select>
-                <div className="form-control-feedback">
+                <div className="invalid">
                     {field.meta.touched ? field.meta.error : ''}
                 </div>
             </div>
@@ -59,22 +59,16 @@ class PostForm extends Component {
 
     render() {
         const { handleSubmit, pristine, submitting } = this.props
+        console.log(this.props.post)
         return (
             <form onSubmit={handleSubmit}>
-                <Field label="Title" name="title" component={this.renderField} />
+                <Field label="Title" name="title" component={this.renderField} value="prova" />
                 <Field label="Content" name="body" component={this.renderField} />
                 <Field label="Author" name="author" component={this.renderField} />
-                <Field label="Category" name="category"
-                    component={field => this.renderCategoryField(field)}
-                />
+                <Field label="Category" name="category" component={field => this.renderCategoryField(field)} />
                 <br />
-                <button
-                    type="submit"
-                    className="btn btn-primary"
-                    disabled={pristine || submitting}>Save</button>{' '}
-                <Link
-                    to={'/'}
-                    className="btn btn-danger">Cancel</Link>
+                <button type="submit" className="btn btn-primary" disabled={pristine || submitting}>Save</button>{' '}
+                <Link to={'/'} className="btn btn-danger">Cancel</Link>
             </form>
         )
     }
@@ -98,7 +92,8 @@ const validate = (values) => {
 }
 
 const mapStateToProps = (state) => ({
-    categories: state.categories
+    categories: state.categories,
+    post: state.post
 })
 export default connect(mapStateToProps)(reduxForm({
     validate,

@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import PostList from './components/PostList'
 import CreatePost from './components/CreatePost'
 import DetailPost from './components/DetailPost'
+import EditPost from './components/EditPost'
 
 class App extends Component {
 	render() {
@@ -11,7 +12,7 @@ class App extends Component {
 				<Route exact path="/" component={PostList} />
 				<Route exact path="/:category" component={props => <PostList {...props} />} />
 				<Route exact path="/create/post" component={CreatePost} />
-				<Route exact path="/:category/:id/edit" component={props => <DetailPost {...props} />} />
+				<Route exact path="/:category/:id/edit" component={props => <EditPost {...props} />} />
 				<Route exact path="/:category/:id" component={props => <DetailPost {...props} />} />
 			</Switch>
 		)

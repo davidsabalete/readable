@@ -27,11 +27,16 @@ class DetailPost extends Component {
 			)
 		}
 
+		// console.log(this.props)
+
 		return (
 			<div className="App">
 				<Header />
 				<div className="container">
 					<article className="card">
+						<i className="fa fa-hand-o-left" 
+							onClick={() => this.props.history.goBack()} 
+						/>
 						<ActionButtons post={post} />
 						<h4>{post.title}</h4>
 						<p className="">

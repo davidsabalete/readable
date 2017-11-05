@@ -7,13 +7,16 @@ import { withRouter } from 'react-router'
 
 class ActionButtons extends Component {
     removePost(id) {
-        this.props.deletePostAsync(id, () => {
-            this.props.fetchPostsAsync()
-        })
+        if (window.confirm('This post is gonna be removed, right?')) {
+            this.props.deletePostAsync(id, () => {
+                this.props.history.push('/')
+                this.props.fetchPostsAsync()
+            })
+        }
     }
     render() {
         const { category, id } = this.props.post
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <div className="action-buttons">
                 <Link to={`/${category}/${id}/edit`} className="btn btn-primary btn-sm">
