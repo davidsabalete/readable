@@ -12,7 +12,7 @@ class App extends Component {
 				<Route exact path="/" component={PostList} />
 				<Route exact path="/:category" component={props => <PostList {...props} />} />
 				<Route exact path="/create/post" component={CreatePost} />
-				<Route exact path="/:category/:id/edit" component={props => <EditPost {...props} />} />
+				<Route exact path="/edit/post/:id" component={props => <EditPost {...props} />} />
 				<Route exact path="/:category/:id" component={props => <DetailPost {...props} />} />
 			</Switch>
 		)

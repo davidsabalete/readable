@@ -19,7 +19,7 @@ class ActionButtons extends Component {
         // console.log(this.props)
         return (
             <div className="action-buttons">
-                <Link to={`/${category}/${id}/edit`} className="btn btn-primary btn-sm">
+                <Link to={`/edit/post/${id}`} className="btn btn-primary btn-sm">
                     <i className="fa fa-pencil" aria-hidden="true" />
                 </Link>
                 <button className="btn btn-danger btn-sm" onClick={() => this.removePost(id)}>
