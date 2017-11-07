@@ -15,7 +15,7 @@ class ActionButtons extends Component {
         }
     }
     render() {
-        const { category, id } = this.props.post
+        const { id } = this.props.post
         // console.log(this.props)
         return (
             <div className="action-buttons">

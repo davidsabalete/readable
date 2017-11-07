@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchPostsAsync, fetchCategoryPostsAsync, sortBy } from '../actions/posts'
+import { votePostAsync } from '../actions/post'
 import Header from './Header'
 import Footer from './Footer'
 import Post from './Post'
@@ -28,14 +29,14 @@ class PostList extends Component {
 		}
 	}
 
-	renderPosts() {
-		const { posts } = this.props
+	renderPosts = () => {
+		const { posts, votePostAsync } = this.props
 		if (!posts.length) {
 			return <div>There are not posts for this category</div>
 		}
 		const orderedPosts = orderBy(posts, [this.state.sortByField], [this.state.sortDirection])
 		return orderedPosts.map(post => (
-			<Post key={post.id} post={post} />
+			<Post key={post.id} post={post} onVote={votePostAsync}/>
 		))
 	}
 
@@ -87,5 +88,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
 	fetchPostsAsync,
 	fetchCategoryPostsAsync,
-	sortBy
+	sortBy,
+	votePostAsync
 })(PostList)
