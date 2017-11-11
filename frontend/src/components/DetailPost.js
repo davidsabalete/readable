@@ -34,15 +34,16 @@ class DetailPost extends Component {
 				<Header />
 				<div className="container">
 					<article className="card">
-						<i className="fa fa-hand-o-left" 
-							onClick={() => this.props.history.goBack()} 
+						<i className="fa fa-hand-o-left"
+							onClick={() => this.props.history.goBack()}
 						/>
 						<ActionButtons post={post} />
 						<h4>{post.title}</h4>
-						<p className="">
-							by {post.author} at {new Date(post.timestamp).toString().substr(0, 16)}
-						</p>
 						<p>{post.body}</p>
+						<p>
+							<i className="fa fa-calendar" /> {new Date(post.timestamp).toString().substr(0, 16)}
+							<i className="fa fa-user" /> {post.author}
+						</p>
 						<p>
 							<Link to={'/' + post.category}>
 								<span className="badge badge-pill badge-secondary">{post.category}</span></Link>{" "}

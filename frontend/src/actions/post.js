@@ -50,6 +50,7 @@ const votePost = (post) => ({
 	post
 })
 
+
 export const deletePostAsync = (id, callback) => dispatch => {
 	api.delete(`/posts/${id}`)
 		.then(() => {

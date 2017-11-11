@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchPostsAsync, fetchCategoryPostsAsync, sortBy } from '../actions/posts'
+import { fetchPostsAsync, fetchCategoryPostsAsync, sortPosts } from '../actions/posts'
 import { votePostAsync } from '../actions/post'
 import Header from './Header'
 import Footer from './Footer'
@@ -20,6 +20,12 @@ class PostList extends Component {
 		this.fetchData()
 	}
 
+	componentDidUpdate(prevProps) {
+		if (prevProps.match.params !== this.props.match.params) {
+			this.fetchData()
+		}
+	}
+
 	fetchData() {
 		const { category } = this.props.match.params
 		if (category) {
@@ -29,14 +35,19 @@ class PostList extends Component {
 		}
 	}
 
+	vote(idPost, strVote) {
+		votePostAsync(idPost, strVote)
+		console.log('vote', idPost, strVote)
+	}
+
 	renderPosts = () => {
-		const { posts, votePostAsync } = this.props
+		const { posts } = this.props
 		if (!posts.length) {
 			return <div>There are not posts for this category</div>
 		}
 		const orderedPosts = orderBy(posts, [this.state.sortByField], [this.state.sortDirection])
 		return orderedPosts.map(post => (
-			<Post key={post.id} post={post} onVote={votePostAsync}/>
+			<Post key={post.id} post={post} onVote={this.vote} />
 		))
 	}
 
@@ -88,6 +99,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
 	fetchPostsAsync,
 	fetchCategoryPostsAsync,
-	sortBy,
+	sortPosts,
 	votePostAsync
 })(PostList)

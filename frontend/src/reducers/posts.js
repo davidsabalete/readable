@@ -11,9 +11,9 @@ const posts = (state = [], action) => {
     case LOAD_CATEGORY_POSTS :
       return action.posts
     case SORT_POSTS :
-      const { sortByField, sortDirection } = action
-      console.log([...state], sortByField, sortDirection)
-      return orderBy([...state], [sortByField], [sortDirection])
+      const desc = action.sortByField.charAt(0) === '-'
+      const sortField = desc ? action.sortByField.slice(1) : action.sortByField
+      return orderBy([...state], [sortField], [desc ? 'desc': 'asc'])
     default :
       return state
   }

@@ -24,8 +24,7 @@ const loadCategoryPosts = (posts) => ({
 	posts
 })
 
-export const sortBy = (sortByField, sortDirection) => ({
+export const sortPosts = (sortByField) => ({
 	type: SORT_POSTS,
-	sortByField,
-	sortDirection
+	sortByField
 })

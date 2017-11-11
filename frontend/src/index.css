@@ -72,3 +72,9 @@ article {
 .action-buttons a, .action-buttons button {
   margin-left: 0.5em;
 }
+.order-buttons button {
+  margin-right: 0.5em;
+}
+.order-buttons label {
+  vertical-align: text-bottom;
+}
