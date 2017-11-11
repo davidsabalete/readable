@@ -4,10 +4,6 @@ import { sortPosts } from '../../actions/posts'
 
 class OrderControls extends React.Component {
 
-    sort(field) {
-        console.log(field)
-    }
-
     render() {
         const { sortPosts } = this.props
         return (
@@ -49,21 +45,6 @@ class OrderControls extends React.Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-// 	const posts = filter(state.posts, post => !post.deleted)
-// 	const { sortByField, sortDirection } = state
-// 	return {
-// 		posts,
-// 		sortByField,
-// 		sortDirection
-// 	}
-// }
-// export default connect(mapStateToProps, {
-//     fetchPostsAsync,
-// 	fetchCategoryPostsAsync,
-// 	sortBy,
-// 	votePostAsync
-// })(OrderControls)
 const mapStateToProps = ({ categories, posts }) => ({ categories, posts })
 const mapDispatchToProps = {sortPosts}
 export default connect(mapStateToProps, mapDispatchToProps)(OrderControls)

@@ -6,6 +6,12 @@ import { votePostAsync } from '../actions/post'
 import { withRouter } from 'react-router'
 
 class Post extends Component {
+
+	refresh() {
+		const {url} = this.props.match
+		this.props.history.push(url)
+	}
+
 	render() {
 		const { post, votePostAsync } = this.props
 		const { category, title, timestamp } = post
@@ -25,11 +31,11 @@ class Post extends Component {
 					<span className="badge badge-pill badge-primary">{post.voteScore} votes </span>{" "}
 					<i className="fa fa-thumbs-o-up" onClick={() => { 
 						votePostAsync(post.id, 'upVote')
-						this.props.history.push('/')
+						this.refresh()
 					 }} />{" "}
 					<i className="fa fa-thumbs-o-down" onClick={() => {
 						votePostAsync(post.id, 'downVote')
-						this.props.history.push('/')
+						this.refresh()
 					}} />
 				</div>
 			</div >

@@ -32,7 +32,7 @@ class HomePage extends React.Component {
             <div className="App">
                 <Header />
                 <div className="container">
-                    <OrderControls />
+                    {this.props.posts.length > 0 && <OrderControls />}
                     <HomePostList />
                 </div>
                 <Footer />
