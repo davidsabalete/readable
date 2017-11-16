@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 
-class PostForm extends Component {
+class CreateForm extends Component {
+
+    static propTypes = {
+        post: PropTypes.object.isRequired,
+        onSubmit: PropTypes.func.isRequired
+    }
 
     renderCategories() {
         const { categories } = this.props
@@ -98,4 +104,4 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps)(reduxForm({
     validate,
     form: 'createForm'
-})(PostForm))
+})(CreateForm))

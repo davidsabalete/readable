@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { createPostAsync } from '../../actions/post'
 
 import Header from '../../components/Header'
-import PostForm from '../../components/PostForm'
+import CreateForm from './CreateForm'
 import Footer from '../../components/Footer'
 
 
@@ -21,7 +21,7 @@ class CreatePost extends Component {
 					<div className="title-view">
 						<h4>Create a new Post</h4>
 					</div>
-					<PostForm onSubmit={this.submit} />
+					<CreateForm onSubmit={this.submit} />
 				</div>
 				<Footer />
 			</div>

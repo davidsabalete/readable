@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchPostAsync } from '../../actions/post'
 
 import Header from '../../components/Header'
-import PostForm from '../../components/PostForm'
+import EditForm from './EditForm'
 import Footer from '../../components/Footer'
 
 class EditPost extends Component {
@@ -16,7 +16,7 @@ class EditPost extends Component {
     }
     
     render() {
-//        console.log(this.props.post)
+        console.log(this.props.post)
         return (
             <div className="App">
 				<Header />
@@ -24,7 +24,7 @@ class EditPost extends Component {
 					<div className="title-view">
 						<h4>Edit Post</h4>
 					</div>
-					<PostForm onSubmit={this.submit} post={this.props.post} />
+					<EditForm onSubmit={this.submit} post={this.props.post} />
 				</div>
 				<Footer />
 			</div>
