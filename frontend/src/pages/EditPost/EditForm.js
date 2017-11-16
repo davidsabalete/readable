@@ -1,107 +1,74 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 
 class EditForm extends Component {
 
-    static propTypes = {
-        post: PropTypes.object.isRequired,
-        onSubmit: PropTypes.func.isRequired
-    }
-
-    renderCategories() {
-        const { categories } = this.props
-        return categories.map(category => <option key={category.name}>{category.name}</option>)
-    }
-
-    renderField(field) {
-        const { meta: { touched, error } } = field
-        const className = touched && error ? 'invalid' : null
-        if (field.input.name === 'body') {
-            return (
-                <div className={'form-group ' + className}>
-                    <label>{field.label}</label>
-                    <textarea type="text" {...field.input} className="form-control">{field.input.value}</textarea>
-                    <div className="invalid">{touched ? error : ''}</div>
-                </div>
-            )
-        } else {
-            return (
-                <div className={'form-group ' + className}>
-                    <label>{field.label}</label>
-                    <input type="text" {...field.input} className="form-control" />
-                    <div className="invalid">{touched ? error : ''}</div>
-                </div>
-            )
-        }
-    }
-
-    renderCategoryField(field) {
-        const { categories } = this.props;
-        const { meta: { touched, error } } = field;
-        const className = touched && error ? 'error' : null;
-
-        return (
-            <div className={'form-group ' + className}>
-                <label>{field.label}</label>
-                <select {...field.input} className="form-control text-capitalize">
-                    <option value="" className="disabled">
-                        Select a category
-                        </option>
-                    {categories.map(category => (
-                        <option key={category.name} value={category.name}>
-                            {category.name}
-                        </option>
-                    ))}
-                </select>
-                <div className="invalid">
-                    {field.meta.touched ? field.meta.error : ''}
-                </div>
-            </div>
-        );
+    state = {
+        title: '',
+        body: '',
+        author: '',
+        category: ''
     }
 
     render() {
-        const { handleSubmit, pristine, submitting } = this.props
-        console.log(this.props.post)
+        const { post, categories } = this.props
         return (
-            <form onSubmit={handleSubmit}>
-                <Field label="Title" name="title" component={this.renderField} value="prova" />
-                <Field label="Content" name="body" component={this.renderField} />
-                <Field label="Author" name="author" component={this.renderField} />
-                <Field label="Category" name="category" component={field => this.renderCategoryField(field)} />
+            <form onSubmit={this.props.onSubmit}>
+
+                <div className="form-group">
+                    <label>Title</label>
+                    <input
+                        type="text"
+                        value={this.props.post.title}
+                        className="form-control" />
+                </div>
+
+                <div className="form-group">
+                    <label>Content</label>
+                    <input
+                        type="text"
+                        value={this.props.post.body}
+                        className="form-control" />
+                </div>
+
+                <div className="form-group">
+                    <label>Author</label>
+                    <input
+                        type="text"
+                        value={this.props.post.author}
+                        className="form-control" />
+                </div>
+
+                <div className="form-group">
+                    <label>Category</label>
+                    <select value={this.props.post.category}
+                        className="form-control text-capitalize">
+                        <option value="" className="disabled">
+                            Select a category
+                        </option>
+                        {categories.map(category => (
+                            <option key={category.name} value={category.name}>
+                                {category.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
                 <br />
-                <button type="submit" className="btn btn-primary" disabled={pristine || submitting}>Save</button>{' '}
-                <Link to={'/'} className="btn btn-danger">Cancel</Link>
+
+                <button type="submit"
+                    className="btn btn-primary">
+                    Save
+                </button>{' '}
+                <Link to={'/'}
+                    className="btn btn-danger">
+                    Cancel
+                </Link>
             </form>
         )
     }
 }
 
-const validate = (values) => {
-    const errors = {}
-    if (!values.title) {
-        errors.title = 'A title is required'
-    }
-    if (!values.body) {
-        errors.body = 'A body is required'
-    }
-    if (!values.category) {
-        errors.category = 'A category is required'
-    }
-    if (!values.author) {
-        errors.author = 'An author is required'
-    }
-    return errors
-}
-
-const mapStateToProps = (state) => ({
-    categories: state.categories,
-    post: state.post
-})
-export default connect(mapStateToProps)(reduxForm({
-    validate,
-    form: 'createForm'
-})(EditForm))
+const mapStateToProps = ({ post, categories }) => ({ post, categories })
+export default connect(mapStateToProps)(EditForm)

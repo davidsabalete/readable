@@ -24,7 +24,7 @@ class EditPost extends Component {
 					<div className="title-view">
 						<h4>Edit Post</h4>
 					</div>
-					<EditForm onSubmit={this.submit} post={this.props.post} />
+					<EditForm onSubmit={this.submit} />
 				</div>
 				<Footer />
 			</div>
