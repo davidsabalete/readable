@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import HomePage from './pages/HomePage'
-import CreatePost from './components/CreatePost'
-import DetailPost from './components/DetailPost'
-import EditPost from './components/EditPost'
+import CreatePost from './pages/CreatePost'
+import DetailPost from './pages/DetailPost'
+import EditPost from './pages/EditPost'
 
 class App extends Component {
 	render() {

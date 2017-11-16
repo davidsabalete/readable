@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createPostAsync } from '../actions/post'
+import { createPostAsync } from '../../actions/post'
 
-import Header from './Header'
-import PostForm from './PostForm'
-import Footer from './Footer'
+import Header from '../../components/Header'
+import PostForm from '../../components/PostForm'
+import Footer from '../../components/Footer'
 
 
 class CreatePost extends Component {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchPostAsync, votePostAsync } from '../actions/post'
-import Header from './Header'
-import Footer from './Footer'
-import ActionButtons from './ActionButtons'
+import { fetchPostAsync, votePostAsync } from '../../actions/post'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import ActionButtons from '../../components/ActionButtons'
 
 class DetailPost extends Component {
 
