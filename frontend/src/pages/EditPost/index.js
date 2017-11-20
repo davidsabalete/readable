@@ -16,7 +16,7 @@ class EditPost extends Component {
     }
     
     render() {
-        console.log(this.props.post)
+        // console.log(this.props.post)
         return (
             <div className="App">
 				<Header />

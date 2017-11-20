@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchPostsAsync, fetchCategoryPostsAsync, sortPosts } from '../../actions/posts'
+import { resetPost } from '../../actions/post'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import OrderControls from './OrderControls'
@@ -25,6 +26,7 @@ class HomePage extends React.Component {
         } else {
             this.props.fetchPostsAsync()
         }
+        this.props.resetPost()
     }
 
     render() {
@@ -41,6 +43,6 @@ class HomePage extends React.Component {
     }
 }
 
-const mapStateToProps = ({ categories, posts }) => ({ categories, posts })
-const mapDispatchToProps = { fetchPostsAsync, fetchCategoryPostsAsync, sortPosts }
+const mapStateToProps = ({ categories, posts, post }) => ({ categories, posts, post })
+const mapDispatchToProps = { fetchPostsAsync, fetchCategoryPostsAsync, sortPosts, resetPost }
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

@@ -5,6 +5,7 @@ export const LOAD_POST = 'LOAD_POST'
 export const CREATE_POST = 'CREATE_POST'
 export const VOTE_POST = 'VOTE_POST'
 export const DELETE_POST = 'DELETE_POST'
+export const RESET_POST = 'RESET_POST'
 
 
 export const fetchPostAsync = (id) => dispatch => {
@@ -62,3 +63,5 @@ const deletePost = (id) => ({
 	type: DELETE_POST,
 	id
 })
+
+export const resetPost = () => ({ type: RESET_POST, post: {} })
