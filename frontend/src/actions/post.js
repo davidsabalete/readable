@@ -6,11 +6,16 @@ export const CREATE_POST = 'CREATE_POST'
 export const VOTE_POST = 'VOTE_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const RESET_POST = 'RESET_POST'
+export const UPDATE_POST = 'UPDATE_POST'
 
 
-export const fetchPostAsync = (id) => dispatch => {
+
+export const fetchPostAsync = (id, callback) => dispatch => {
 	api.get(`/posts/${id}`)
-		.then(res => dispatch(loadPost(res.data)))
+		.then(res => {
+			dispatch(loadPost(res.data))
+			callback(res.data)
+		})
 }
 const loadPost = (post) => ({
 	type: LOAD_POST,
@@ -55,7 +60,9 @@ const votePost = (post) => ({
 export const deletePostAsync = (id, callback) => dispatch => {
 	api.delete(`/posts/${id}`)
 		.then(() => {
-			callback()
+			if (callback) {
+				callback()
+			}
 			dispatch(deletePost(id))
 		})
 }
@@ -65,3 +72,19 @@ const deletePost = (id) => ({
 })
 
 export const resetPost = () => ({ type: RESET_POST, post: {} })
+
+
+export const updatePostAsync = (post, callback) => dispatch => {
+	console.log('updatePostAsync')
+	api.put(`/posts/${post.id}`, {title: post.title, body: post.body})
+		.then(res => {
+			if (callback) {
+				callback()
+			}
+			dispatch(updatePost(res.data))
+		})
+}
+const updatePost = (post) => ({
+	type: UPDATE_POST,
+	post
+})

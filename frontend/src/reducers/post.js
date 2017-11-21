@@ -4,6 +4,7 @@ import {
   CREATE_POST,
   DELETE_POST,
   RESET_POST,
+  UPDATE_POST,
   // EDIT_POST,
 } from '../actions/post'
 
@@ -13,6 +14,7 @@ const post = (state = {}, action) => {
     case VOTE_POST:
     case CREATE_POST:
     case RESET_POST:
+    case UPDATE_POST:
       // case EDIT_POST:
       return action.post
     case DELETE_POST:
