@@ -65,7 +65,6 @@ class CreateForm extends Component {
 
     render() {
         const { handleSubmit, pristine, submitting } = this.props
-        console.log(this.props.post)
         return (
             <form onSubmit={handleSubmit}>
                 <Field label="Title" name="title" component={this.renderField} value="prova" />

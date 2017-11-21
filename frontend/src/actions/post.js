@@ -14,7 +14,9 @@ export const fetchPostAsync = (id, callback) => dispatch => {
 	api.get(`/posts/${id}`)
 		.then(res => {
 			dispatch(loadPost(res.data))
-			callback(res.data)
+			if (callback) {
+				callback(res.data)
+			}
 		})
 }
 const loadPost = (post) => ({
@@ -35,8 +37,10 @@ export const createPostAsync = (values, callback) => dispatch => {
 	}
 	api.post(`/posts`, data)
 		.then(res => {
-			callback()
 			dispatch(createPost(res.data))
+			if (callback) {
+				callback(res.data)
+			}
 		})
 }
 const createPost = (post) => ({
@@ -60,10 +64,10 @@ const votePost = (post) => ({
 export const deletePostAsync = (id, callback) => dispatch => {
 	api.delete(`/posts/${id}`)
 		.then(() => {
+			dispatch(deletePost(id))
 			if (callback) {
 				callback()
 			}
-			dispatch(deletePost(id))
 		})
 }
 const deletePost = (id) => ({
@@ -78,10 +82,10 @@ export const updatePostAsync = (post, callback) => dispatch => {
 	console.log('updatePostAsync')
 	api.put(`/posts/${post.id}`, {title: post.title, body: post.body})
 		.then(res => {
+			dispatch(updatePost(res.data))
 			if (callback) {
 				callback()
 			}
-			dispatch(updatePost(res.data))
 		})
 }
 const updatePost = (post) => ({
