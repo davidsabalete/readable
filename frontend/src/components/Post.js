@@ -4,6 +4,7 @@ import ActionButtons from './ActionButtons'
 import { connect } from 'react-redux'
 import { votePostAsync } from '../actions/post'
 import { withRouter } from 'react-router'
+import FontAwesome from 'react-fontawesome'
 
 class Post extends Component {
 
@@ -23,17 +24,17 @@ class Post extends Component {
 				<div className="card-block">
 					<ActionButtons post={post} />
 					<Link to={`/${category}/${post.id}`} className="card-title"><h4>{title}</h4></Link>
-					<i className="fa fa-calendar" /> {new Date(timestamp).toString().substr(0, 16)}
+					<FontAwesome name="calendar" /> {new Date(timestamp).toString().substr(0, 16)}
 					{' '}
 					<Link to={`/${category}`}>
 						<span className="badge badge-pill badge-secondary">{category}</span>
 					</Link>{" "}
 					<span className="badge badge-pill badge-primary">{post.voteScore} votes </span>{" "}
-					<i className="fa fa-thumbs-o-up" onClick={() => { 
+					<FontAwesome name="thumbs-o-up" onClick={() => { 
 						votePostAsync(post.id, 'upVote')
 						this.refresh()
 					 }} />{" "}
-					<i className="fa fa-thumbs-o-down" onClick={() => {
+					<FontAwesome name="thumbs-o-down" onClick={() => {
 						votePostAsync(post.id, 'downVote')
 						this.refresh()
 					}} />

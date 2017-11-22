@@ -4,6 +4,7 @@ import { deletePostAsync } from '../actions/post'
 import { fetchPostsAsync } from '../actions/posts'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import FontAwesome from 'react-fontawesome'
 
 class ActionButtons extends Component {
     removePost(id) {
@@ -20,10 +21,10 @@ class ActionButtons extends Component {
         return (
             <div className="action-buttons">
                 <Link to={`/edit/post/${id}`} className="btn btn-primary btn-sm">
-                    <i className="fa fa-pencil" aria-hidden="true" />
+                    <FontAwesome name="pencil" aria-hidden="true" />
                 </Link>
                 <button className="btn btn-danger btn-sm" onClick={() => this.removePost(id)}>
-                    <i className="fa fa-trash-o" aria-hidden="true" />
+                    <FontAwesome name="trash" aria-hidden="true" />
                 </button>
             </div>
         )

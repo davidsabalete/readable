@@ -5,6 +5,7 @@ import { fetchPostAsync, votePostAsync } from '../../actions/post'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import ActionButtons from '../../components/ActionButtons'
+import FontAwesome from 'react-fontawesome'
 
 class DetailPost extends Component {
 
@@ -34,22 +35,22 @@ class DetailPost extends Component {
 				<Header />
 				<div className="container">
 					<article className="card">
-						<i className="fa fa-hand-o-left"
+						<FontAwesome name="hand-o-left"
 							onClick={() => this.props.history.goBack()}
 						/>
 						<ActionButtons post={post} />
 						<h4>{post.title}</h4>
 						<p>{post.body}</p>
 						<p>
-							<i className="fa fa-calendar" /> {new Date(post.timestamp).toString().substr(0, 16)}
-							<i className="fa fa-user" /> {post.author}
+							<FontAwesome name="calendar" /> {new Date(post.timestamp).toString().substr(0, 16)}
+							<FontAwesome name="user" /> {post.author}
 						</p>
 						<p>
 							<Link to={'/' + post.category}>
 								<span className="badge badge-pill badge-secondary">{post.category}</span></Link>{" "}
 							<span className="badge badge-pill badge-primary">{post.voteScore} votes </span>{" "}
-							<i className="fa fa-thumbs-o-up" aria-hidden="true" onClick={() => this.vote('upVote')} />{" "}
-							<i className="fa fa-thumbs-o-down" aria-hidden="true" onClick={() => this.vote('downVote')} />
+							<FontAwesome name="thumbs-o-up" aria-hidden="true" onClick={() => this.vote('upVote')} />{" "}
+							<FontAwesome name="thumbs-o-down" aria-hidden="true" onClick={() => this.vote('downVote')} />
 						</p>
 					</article>
 				</div>
