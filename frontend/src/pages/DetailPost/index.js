@@ -2,15 +2,20 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchPostAsync, votePostAsync } from '../../actions/post'
+import { fetchPostCommentsAsync } from '../../actions/comments'
+
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import ActionButtons from '../../components/ActionButtons'
 import FontAwesome from 'react-fontawesome'
+import Comment from '../../components/Comment'
 
 class DetailPost extends Component {
 
 	componentWillMount() {
-		this.props.fetchPostAsync(this.props.match.params.id)
+		const { id } = this.props.match.params
+		this.props.fetchPostAsync(id)
+		this.props.fetchPostCommentsAsync(id)
 	}
 
 	vote(voteValue) {
@@ -52,6 +57,10 @@ class DetailPost extends Component {
 							<FontAwesome name="thumbs-o-up" aria-hidden="true" onClick={() => this.vote('upVote')} />{" "}
 							<FontAwesome name="thumbs-o-down" aria-hidden="true" onClick={() => this.vote('downVote')} />
 						</p>
+
+						<div>
+							{this.props.comments.map((comment) => <Comment comment={comment} key={comment.id}/>)}
+						</div>
 					</article>
 				</div>
 				<Footer />
@@ -60,8 +69,10 @@ class DetailPost extends Component {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => ({ post: state.post })
+const mapStateToProps = ({ post, comments }) => ({ post, comments })
+// const mapStateToProps = (state, ownProps) => ({ post: state.post })
 export default connect(mapStateToProps, {
 	fetchPostAsync,
-	votePostAsync
+	votePostAsync,
+	fetchPostCommentsAsync
 })(DetailPost)

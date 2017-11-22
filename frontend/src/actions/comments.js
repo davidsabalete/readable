@@ -7,15 +7,11 @@ export const EDIT_POST_COMMENT = 'EDIT_POST_COMMENT'
 export const DELETE_POST_COMMENT = 'DELETE_POST_COMMENT'
 export const VOTE_POST_COMMENT = 'VOTE_POST_COMMENT'
 
+
+
 export const fetchPostCommentsAsync = (postId) => dispatch => {
 	api.get(`/posts/${postId}/comments`)
-		.then(response => response.data)
-		.then(
-		data => {
-			dispatch(fetchPostComments(data))
-		},
-		error => console.error(error)
-		)
+		.then(res => dispatch(fetchPostComments(res.data)))
 }
 const fetchPostComments = (comments) => ({ 
 	type: LOAD_POST_COMMENTS, 
@@ -25,15 +21,11 @@ const fetchPostComments = (comments) => ({
 
 export const deletePostCommentAsync = ({ commentId }) => dispatch => {
 	api.delete(`/comments/${commentId}`)
-		.then(response => response.data)
-		.then(
-		data => dispatch(deletePostComment(data)),
-		error => console.error(error)
-		)
+		.then(res => dispatch(deletePostComment(res.data)))
 }
-const deletePostComment = (data) => ({ 
+const deletePostComment = (comment) => ({ 
 	type: DELETE_POST_COMMENT, 
-	data 
+	comment 
 })
 
 
@@ -44,12 +36,7 @@ export const createPostCommentAsync = ({ body, author, parentId }) => dispatch =
 		body,
 		author,
 		parentId
-	})
-		.then(response => response.data)
-		.then(
-		data => dispatch(createPostComment(data)),
-		error => console.error(error)
-		)
+	}).then(res => dispatch(createPostComment(res.data)))
 }
 const createPostComment = (data) => ({ 
 	type: CREATE_POST_COMMENT,
@@ -59,25 +46,17 @@ const createPostComment = (data) => ({
 
 export const editPostCommentAsync = ({ id, body, author }) => dispatch => {
 	api.put(`/comments/${id}`, { body, author })
-		.then(response => response.data)
-		.then(
-		data => dispatch(editPostComment(data)),
-		error => console.error(error)
-		)
+		.then(res => dispatch(editPostComment(res.data)))
 }
-const editPostComment = (data) => ({ 
+const editPostComment = (comment) => ({ 
 	type: EDIT_POST_COMMENT, 
-	data 
+	comment 
 })
 
 
 export const votePostCommentAsync = ({ commentId, vote }) => dispatch => {
 	api.post(`/comments/${commentId}`, { option: vote })
-		.then(response => response.data)
-		.then(
-		data => dispatch(votePostComment(data)),
-		error => console.error(error)
-		)
+		.then(res => dispatch(votePostComment(res.data)))
 }
 const votePostComment = (data) => ({ 
 	type: VOTE_POST_COMMENT, 
