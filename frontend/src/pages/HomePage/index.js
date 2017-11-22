@@ -44,5 +44,10 @@ class HomePage extends React.Component {
 }
 
 const mapStateToProps = ({ categories, posts, post }) => ({ categories, posts, post })
-const mapDispatchToProps = { fetchPostsAsync, fetchCategoryPostsAsync, sortPosts, resetPost }
+const mapDispatchToProps = { 
+    fetchPostsAsync, 
+    fetchCategoryPostsAsync, 
+    sortPosts, 
+    resetPost 
+}
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

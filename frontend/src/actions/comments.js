@@ -1,5 +1,5 @@
 import { api } from '../utils/api'
-import uuidv4 from 'uuid/v4'
+import uuid from 'uuid/v4'
 
 export const LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS'
 export const CREATE_POST_COMMENT = 'CREATE_POST_COMMENT'
@@ -11,11 +11,16 @@ export const fetchPostCommentsAsync = (postId) => dispatch => {
 	api.get(`/posts/${postId}/comments`)
 		.then(response => response.data)
 		.then(
-		data => dispatch(fetchPostComments(data)),
+		data => {
+			dispatch(fetchPostComments(data))
+		},
 		error => console.error(error)
 		)
 }
-const fetchPostComments = (data) => ({ type: LOAD_POST_COMMENTS, data })
+const fetchPostComments = (comments) => ({ 
+	type: LOAD_POST_COMMENTS, 
+	comments
+})
 
 
 export const deletePostCommentAsync = ({ commentId }) => dispatch => {
@@ -26,12 +31,15 @@ export const deletePostCommentAsync = ({ commentId }) => dispatch => {
 		error => console.error(error)
 		)
 }
-const deletePostComment = (data) => ({ type: DELETE_POST_COMMENT, data })
+const deletePostComment = (data) => ({ 
+	type: DELETE_POST_COMMENT, 
+	data 
+})
 
 
 export const createPostCommentAsync = ({ body, author, parentId }) => dispatch => {
 	api.post(`/comments`, {
-		id: uuidv4(),
+		id: { uuid }(),
 		timestamp: Date.now(),
 		body,
 		author,
@@ -43,7 +51,10 @@ export const createPostCommentAsync = ({ body, author, parentId }) => dispatch =
 		error => console.error(error)
 		)
 }
-const createPostComment = (data) => ({ type: CREATE_POST_COMMENT, data })
+const createPostComment = (data) => ({ 
+	type: CREATE_POST_COMMENT,
+	data 
+})
 
 
 export const editPostCommentAsync = ({ id, body, author }) => dispatch => {
@@ -54,7 +65,10 @@ export const editPostCommentAsync = ({ id, body, author }) => dispatch => {
 		error => console.error(error)
 		)
 }
-const editPostComment = (data) => ({ type: EDIT_POST_COMMENT, data })
+const editPostComment = (data) => ({ 
+	type: EDIT_POST_COMMENT, 
+	data 
+})
 
 
 export const votePostCommentAsync = ({ commentId, vote }) => dispatch => {
@@ -65,4 +79,7 @@ export const votePostCommentAsync = ({ commentId, vote }) => dispatch => {
 		error => console.error(error)
 		)
 }
-const votePostComment = (data) => ({ type: VOTE_POST_COMMENT, data })
+const votePostComment = (data) => ({ 
+	type: VOTE_POST_COMMENT, 
+	data 
+})

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import ActionButtons from './ActionButtons'
 import { connect } from 'react-redux'
 import { votePostAsync } from '../actions/post'
+import { fetchPostCommentsAsync } from '../actions/comments'
 import { withRouter } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 
@@ -11,6 +12,11 @@ class Post extends Component {
 	refresh() {
 		const {url} = this.props.match
 		this.props.history.push(url)
+	}
+
+	componentDidMount() {
+		const { id } = this.props.post
+		this.props.fetchPostCommentsAsync(id)
 	}
 
 	render() {
@@ -37,10 +43,17 @@ class Post extends Component {
 					<FontAwesome name="thumbs-o-down" onClick={() => {
 						votePostAsync(post.id, 'downVote')
 						this.refresh()
-					}} />
+					}} />{" "}
+					
+
 				</div>
+				<FontAwesome name="comment" /> {2} comments
 			</div >
 		)
 	}
 }
-export default withRouter(connect(null, { votePostAsync })(Post))
+const mapDispatchToProps = {
+	votePostAsync, 
+	fetchPostCommentsAsync
+}
+export default withRouter(connect(null, mapDispatchToProps)(Post))

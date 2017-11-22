@@ -1,5 +1,5 @@
 import { api } from '../utils/api'
-import { uuid } from '../utils/uuid'
+import uuid from 'uuid/v4'
 
 export const LOAD_POST = 'LOAD_POST'
 export const CREATE_POST = 'CREATE_POST'
@@ -74,6 +74,7 @@ const deletePost = (id) => ({
 	type: DELETE_POST,
 	id
 })
+
 
 export const resetPost = () => ({ type: RESET_POST, post: {} })
 
