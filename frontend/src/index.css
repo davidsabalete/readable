@@ -78,3 +78,11 @@ article {
 .order-buttons label {
   vertical-align: text-bottom;
 }
+
+.comment {
+  /* background-clip: border-box; */
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  margin: 1em 0;
+  padding: 1em;
+}

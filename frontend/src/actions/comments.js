@@ -54,9 +54,13 @@ const editPostComment = (comment) => ({
 })
 
 
+// BUG to FIX
 export const votePostCommentAsync = ({ commentId, vote }) => dispatch => {
 	api.post(`/comments/${commentId}`, { option: vote })
-		.then(res => dispatch(votePostComment(res.data)))
+		.then(res => {
+			console.log('comments action response:', res)
+			dispatch(votePostComment(res.data))
+		})
 }
 const votePostComment = (data) => ({ 
 	type: VOTE_POST_COMMENT, 

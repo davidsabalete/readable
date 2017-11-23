@@ -57,7 +57,7 @@ class DetailPost extends Component {
 							<FontAwesome name="thumbs-o-up" aria-hidden="true" onClick={() => this.vote('upVote')} />{" "}
 							<FontAwesome name="thumbs-o-down" aria-hidden="true" onClick={() => this.vote('downVote')} />
 						</p>
-
+						{this.props.comments.length > 0 && <h5>Comments</h5>}
 						<div>
 							{this.props.comments.map((comment) => <Comment comment={comment} key={comment.id}/>)}
 						</div>
