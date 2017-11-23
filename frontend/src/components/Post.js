@@ -3,20 +3,27 @@ import { Link } from 'react-router-dom'
 import ActionButtons from './ActionButtons'
 import { connect } from 'react-redux'
 import { votePostAsync } from '../actions/post'
-import { fetchPostCommentsAsync } from '../actions/comments'
+import { fetchPostCommentsAsync, fetchNumCommentsAsync } from '../actions/comments'
 import { withRouter } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 
 class Post extends Component {
+
+	state = {
+		numComments: 0
+	}
 
 	refresh() {
 		const {url} = this.props.match
 		this.props.history.push(url)
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		const { id } = this.props.post
 		this.props.fetchPostCommentsAsync(id)
+		this.props.fetchNumCommentsAsync(id, data => {
+			this.setState({ numComments: data.length })
+		})
 	}
 
 	render() {
@@ -47,13 +54,17 @@ class Post extends Component {
 					
 
 				</div>
-				<FontAwesome name="comment" /> {2} comments
+				<FontAwesome name="comment" /> {this.state.numComments} comments
 			</div >
 		)
 	}
 }
+
+
+const mapStateToProps = ({ comments }) => ({ comments })
 const mapDispatchToProps = {
 	votePostAsync, 
-	fetchPostCommentsAsync
+	fetchPostCommentsAsync,
+	fetchNumCommentsAsync
 }
-export default withRouter(connect(null, mapDispatchToProps)(Post))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Post))

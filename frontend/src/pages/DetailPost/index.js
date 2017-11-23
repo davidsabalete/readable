@@ -24,7 +24,7 @@ class DetailPost extends Component {
 	}
 
 	render() {
-		const { post } = this.props
+		const { post, comments } = this.props
 		if (!post) {
 			return (
 				<div className="alert alert-warning" role="alert">
@@ -32,8 +32,6 @@ class DetailPost extends Component {
 				</div>
 			)
 		}
-
-		// console.log(this.props)
 
 		return (
 			<div className="App">
@@ -57,9 +55,9 @@ class DetailPost extends Component {
 							<FontAwesome name="thumbs-o-up" aria-hidden="true" onClick={() => this.vote('upVote')} />{" "}
 							<FontAwesome name="thumbs-o-down" aria-hidden="true" onClick={() => this.vote('downVote')} />
 						</p>
-						{this.props.comments.length > 0 && <h5>Comments</h5>}
 						<div>
-							{this.props.comments.map((comment) => <Comment comment={comment} key={comment.id}/>)}
+							{comments.length > 0 && <h5>Comments</h5>}
+							{comments.lenght > 0 && comments.map((comment) => <Comment comment={comment} key={comment.id} />)}
 						</div>
 					</article>
 				</div>

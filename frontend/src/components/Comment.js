@@ -5,16 +5,6 @@ import { votePostCommentAsync } from '../actions/comments'
 
 
 class Comment extends React.Component {
-    state = {
-        id: '',
-        parentId: '',
-        timestamp: '',
-        body: '',
-        author: '',
-        voteScore: 0,
-        deleted: false,
-        parentDeleted: false
-    }
 
     refresh() {
 		const {url} = this.props.match
@@ -22,10 +12,8 @@ class Comment extends React.Component {
     }
     
     componentDidMount() {
-        console.log(this.props.post)
-        console.log(this.state)
+        // console.log(this.props.post)
     }
-
 
     render () {
         const { id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted } = this.props.comment
@@ -58,7 +46,7 @@ class Comment extends React.Component {
         )
     }
 }
-const mapStateToProps = ({ post, comments }) => ({ post, comments })
+const mapStateToProps = ({ post }) => ({ post })
 const mapDispatchToProps = {
     votePostCommentAsync
 }
