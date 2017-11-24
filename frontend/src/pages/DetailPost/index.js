@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchPostAsync, votePostAsync } from '../../actions/post'
 import { fetchPostCommentsAsync } from '../../actions/comments'
+import { isEmpty } from 'lodash'
 
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
@@ -25,6 +26,7 @@ class DetailPost extends Component {
 
 	render() {
 		const { post, comments } = this.props
+		console.log(comments)
 		if (!post) {
 			return (
 				<div className="alert alert-warning" role="alert">
@@ -50,14 +52,15 @@ class DetailPost extends Component {
 						</p>
 						<p>
 							<Link to={'/' + post.category}>
-								<span className="badge badge-pill badge-secondary">{post.category}</span></Link>{" "}
+								<span className="badge badge-pill badge-secondary">{post.category}</span>
+							</Link>{" "}
 							<span className="badge badge-pill badge-primary">{post.voteScore} votes </span>{" "}
-							<FontAwesome name="thumbs-o-up" aria-hidden="true" onClick={() => this.vote('upVote')} />{" "}
-							<FontAwesome name="thumbs-o-down" aria-hidden="true" onClick={() => this.vote('downVote')} />
+							<FontAwesome name="thumbs-o-up" onClick={() => this.vote('upVote')} />{" "}
+							<FontAwesome name="thumbs-o-down" onClick={() => this.vote('downVote')} />
 						</p>
 						<div>
-							{comments.length > 0 && <h5>Comments</h5>}
-							{comments.lenght > 0 && comments.map((comment) => <Comment comment={comment} key={comment.id} />)}
+							{!isEmpty(comments) && <h5>Comments</h5>}
+							{!isEmpty(comments) && comments.length > 0 && comments.map((comment) => <Comment comment={comment} key={comment.id} />)}
 						</div>
 					</article>
 				</div>
