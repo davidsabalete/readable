@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import FontAwesome from 'react-fontawesome'
 import { votePostCommentAsync } from '../actions/comments'
+import CommentButtons from './CommentButtons'
 
 
 class Comment extends React.Component {
@@ -16,10 +17,11 @@ class Comment extends React.Component {
     }
 
     render () {
-        const { id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted } = this.props.comment
-        const { votePostCommentAsync } = this.props 
+        const { comment, votePostCommentAsync } = this.props
+        const { id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted } = comment
         return (
             <div className="comment">
+                <CommentButtons comment={this.props.comment} />
                 <blockquote>
                     <p>On {new Date(timestamp).toString().substr(0, 16)} <strong>{author}</strong> said:</p>
                     <cite>{body}</cite>

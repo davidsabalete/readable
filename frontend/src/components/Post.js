@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import ActionButtons from './ActionButtons'
+import PostButtons from './PostButtons'
 import { connect } from 'react-redux'
 import { votePostAsync } from '../actions/post'
 import { fetchPostCommentsAsync, fetchNumCommentsAsync } from '../actions/comments'
@@ -35,7 +35,7 @@ class Post extends Component {
 		return (
 			<div className="card">
 				<div className="card-block">
-					<ActionButtons post={post} />
+					<PostButtons post={post} />
 					<Link to={`/${category}/${post.id}`} className="card-title"><h4>{title}</h4></Link>
 					<FontAwesome name="calendar" /> {new Date(timestamp).toString().substr(0, 16)}
 					{' '}

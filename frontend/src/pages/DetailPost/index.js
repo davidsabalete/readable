@@ -7,7 +7,7 @@ import { isEmpty } from 'lodash'
 
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import ActionButtons from '../../components/ActionButtons'
+import PostButtons from '../../components/PostButtons'
 import FontAwesome from 'react-fontawesome'
 import Comment from '../../components/Comment'
 
@@ -26,7 +26,7 @@ class DetailPost extends Component {
 
 	render() {
 		const { post, comments } = this.props
-		console.log(comments)
+		// console.log(comments)
 		if (!post) {
 			return (
 				<div className="alert alert-warning" role="alert">
@@ -43,7 +43,7 @@ class DetailPost extends Component {
 						<FontAwesome name="hand-o-left"
 							onClick={() => this.props.history.goBack()}
 						/>
-						<ActionButtons post={post} />
+						<PostButtons post={post} />
 						<h4>{post.title}</h4>
 						<p>{post.body}</p>
 						<p>

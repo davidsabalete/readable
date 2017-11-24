@@ -38,9 +38,10 @@ const fetchNumComments = (num) => ({
 })
 
 
-export const deletePostCommentAsync = ({ commentId }) => dispatch => {
+export const deletePostCommentAsync = (commentId, callback) => dispatch => {
 	api.delete(`/comments/${commentId}`)
 		.then(res => {
+			callback()
 			dispatch(deletePostComment(res.data))
 		})
 }

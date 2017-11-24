@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 
-class ActionButtons extends Component {
+class PostButtons extends Component {
     removePost(id) {
         if (window.confirm('This post is gonna be removed, right?')) {
             this.props.deletePostAsync(id, () => {
@@ -31,4 +31,4 @@ class ActionButtons extends Component {
     }
 }
 
-export default withRouter(connect(null, { deletePostAsync, fetchPostsAsync })(ActionButtons))
+export default withRouter(connect(null, { deletePostAsync, fetchPostsAsync })(PostButtons))
