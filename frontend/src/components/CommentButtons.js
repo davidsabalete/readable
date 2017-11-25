@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { deletePostCommentAsync } from '../actions/comments'
 import { fetchPostsAsync } from '../actions/posts'
 import { connect } from 'react-redux'
-import { withRouter, Redirect } from 'react-router'
+import { withRouter } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 
 class CommentButtons extends Component {

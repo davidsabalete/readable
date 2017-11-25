@@ -23,7 +23,7 @@ class Comment extends React.Component {
             <div className="comment">
                 <CommentButtons comment={this.props.comment} />
                 <blockquote>
-                    <p>On {new Date(timestamp).toString().substr(0, 16)} <strong>{author}</strong> said:</p>
+                    <p className="date-info">On {new Date(timestamp).toString().substr(0, 16)} <strong>{author}</strong> said:</p>
                     <cite>{body}</cite>
                 </blockquote>
 

@@ -3,16 +3,18 @@ import { connect } from 'react-redux'
 import { createPostAsync } from '../../actions/post'
 
 import Header from '../../components/Header'
-import CreateForm from './CreateForm'
+import PostForm from './PostForm'
 import Footer from '../../components/Footer'
 
 
 class CreatePost extends Component {
+
 	submit = (values) => {
 		this.props.createPostAsync(values, () => {
 			this.props.history.push('/')
 		})
 	}
+	
 	render() {
 		return (
 			<div className="App">
@@ -21,7 +23,7 @@ class CreatePost extends Component {
 					<div className="title-view">
 						<h4>Create a new Post</h4>
 					</div>
-					<CreateForm onSubmit={this.submit} />
+					<PostForm onSubmit={this.submit} />
 				</div>
 				<Footer />
 			</div>

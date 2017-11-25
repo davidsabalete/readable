@@ -51,14 +51,16 @@ const deletePostComment = (comment) => ({
 })
 
 
-export const createPostCommentAsync = ({ body, author, parentId }) => dispatch => {
+export const createPostCommentAsync = (values, callback) => dispatch => {
+	const {body, author, parentId} = values
 	api.post(`/comments`, {
-		id: { uuid }(),
+		id: uuid(),
 		timestamp: Date.now(),
 		body,
 		author,
 		parentId
 	}).then(res => {
+		callback()
 		dispatch(createPostComment(res.data))
 	})
 }

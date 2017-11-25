@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import CreatePost from './pages/CreatePost'
 import DetailPost from './pages/DetailPost'
 import EditPost from './pages/EditPost'
+import CreateComment from './pages/CreateComment'
 
 class App extends Component {
 	render() {
@@ -14,6 +15,7 @@ class App extends Component {
 				<Route exact path="/create/post" component={CreatePost} />
 				<Route exact path="/edit/post/:id" component={props => <EditPost {...props} />} />
 				<Route exact path="/:category/:id" component={props => <DetailPost {...props} />} />
+				<Route exact path="/:category/:id/create/comment" component={props => <CreateComment {...props} />} />
 			</Switch>
 		)
 	}

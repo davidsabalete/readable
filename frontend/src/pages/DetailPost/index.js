@@ -13,8 +13,15 @@ import Comment from '../../components/Comment'
 
 class DetailPost extends Component {
 
+	state = {
+		id: '',
+		category: ''
+	}
+
 	componentWillMount() {
-		const { id } = this.props.match.params
+		const { id, category } = this.props.match.params
+		this.setState({ id, category })
+
 		this.props.fetchPostAsync(id)
 		this.props.fetchPostCommentsAsync(id)
 	}
@@ -46,10 +53,16 @@ class DetailPost extends Component {
 						<PostButtons post={post} />
 						<h4>{post.title}</h4>
 						<p>{post.body}</p>
-						<p>
+						<p className="date-info">
 							<FontAwesome name="calendar" /> {new Date(post.timestamp).toString().substr(0, 16)}
 							<FontAwesome name="user" /> {post.author}
 						</p>
+						<div className="action-buttons">
+							<Link to={`/${post.category}/${post.id}/create/comment`}
+								className="btn btn-primary btn-sm">
+								<FontAwesome name="comment-o" aria-hidden="true" /> Leave a comment
+							</Link>
+						</div>
 						<p>
 							<Link to={'/' + post.category}>
 								<span className="badge badge-pill badge-secondary">{post.category}</span>

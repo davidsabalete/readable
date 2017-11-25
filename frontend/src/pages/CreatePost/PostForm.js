@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 
-class CreateForm extends Component {
+class PostForm extends Component {
 
     static propTypes = {
         post: PropTypes.object.isRequired,
@@ -67,7 +67,7 @@ class CreateForm extends Component {
         const { handleSubmit, pristine, submitting } = this.props
         return (
             <form onSubmit={handleSubmit}>
-                <Field label="Title" name="title" component={this.renderField} value="prova" />
+                <Field label="Title" name="title" component={this.renderField} />
                 <Field label="Content" name="body" component={this.renderField} />
                 <Field label="Author" name="author" component={this.renderField} />
                 <Field label="Category" name="category" component={field => this.renderCategoryField(field)} />
@@ -103,4 +103,4 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps)(reduxForm({
     validate,
     form: 'createForm'
-})(CreateForm))
+})(PostForm))
