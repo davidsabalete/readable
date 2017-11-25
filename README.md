@@ -1,26 +1,80 @@
-# Readable API Server
+# Udacity
+## React Nanodegree Course
+### Project 2: Readable
 
-This is the starter project for the final assessment project for Udacity's Redux course where you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+-----
 
-This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
+This application is created using React and Redux. This project proves the knowledge acquired during the course and the understanding of the Redux library usage.
 
-## Start Developing
 
-To get started developing right away:
+## Installation
 
-* Install and start the API server
-    - `cd api-server`
-    - `npm install`
-    - `node server`
-* In another terminal window, install and start the pre-scaffolded Create React App project
-    - `cd frontend`
-    - `npm install`
-    - `npm start`
+To intall in local:
 
-## API Server
+* From inside *api-server* folder, execute in a console:
+```
+npm install
+```
+or 
+```
+yarn 
+```
 
-Information about the API server and how to use it can be found in its [README file](api-server/README.md).
+* From inside *frontend* folder, execute in a console:
+```
+npm install
+```
+or 
+```
+yarn 
+```
 
-## Access The API Server
 
-To accesss the backend server in your code, we have stored the URL to the API server in the environment variable `REACT_APP_BACKEND` which you can access in your code using `process.env.REACT_APP_BACKEND`. You can see this in action in `frontend/src/App.js` in `componentDidMount`.
+## Execution
+
+To run the application:
+* From inside *api-server* folder, execute in a console:
+```
+node start
+```
+
+* From inside *frontend* folder, execut in a console:
+```
+npm start
+```
+or 
+```
+yarn start
+```
+
+This last command will open a browser window with location: *localhost:3000*
+
+
+## Rest service
+
+Rest service is running in *localhost:3001*.
+It's API can be shown when visit that URL.
+
+
+## Libraries and attributions
+
+For this project I have use the following libraries:
+* axios (https://github.com/axios/axios)
+* lodash (https://github.com/lodash/lodash)
+* prop-types (https://github.com/facebook/prop-types)
+* react (https://reactjs.org/)
+* react-dom (https://github.com/facebook/react)
+* react-fontawesome (https://github.com/danawoodman/react-fontawesome)
+* react-redux (https://github.com/reactjs/react-redux)
+* react-router (https://github.com/ReactTraining/react-router)
+* react-router-dom (https://github.com/ReactTraining/react-router)
+* redux (https://github.com/reactjs/redux)
+* redux-form (https://github.com/erikras/redux-form)
+* redux-thunk (https://github.com/gaearon/redux-thunk)
+* uuid (https://github.com/kelektiv/node-uuid)
+
+I would like to thank all that amazing people who contribute with those great tools to the programming world and specially to the open source community.
+Finally, I would like to thank to my mentor Ravi Kumar for his guidance and help in the conclusion of this project.
+
+# David Sabalete
+### Developer
