@@ -2,7 +2,9 @@ import { orderBy } from 'lodash'
 import {
   LOAD_POST_COMMENTS,
   VOTE_POST_COMMENT,
-  FETCH_NUM_COMMENTS
+  FETCH_NUM_COMMENTS,
+  EDIT_POST_COMMENT,
+  FETCH_COMMENT
 } from '../actions/comments'
 
 const comments = (state = [], action) => {
@@ -20,6 +22,9 @@ const comments = (state = [], action) => {
         ...state,
         numComments: action.payload,
       }
+    case EDIT_POST_COMMENT:
+    case FETCH_COMMENT:
+      return action.comment
     default:
       return state
   }

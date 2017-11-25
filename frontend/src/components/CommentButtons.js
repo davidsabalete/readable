@@ -23,7 +23,7 @@ class CommentButtons extends Component {
         // console.log(this.props)
         return (
             <div className="action-buttons">
-                <Link to={`/comments/${id}`} className="btn btn-primary btn-sm">
+                <Link to={`/edit/comment/${id}`} className="btn btn-primary btn-sm">
                     <FontAwesome name="pencil" />
                 </Link>
                 <button className="btn btn-danger btn-sm" onClick={() => this.removeComment(id)}>
