@@ -8,9 +8,13 @@ import {
 const comments = (state = [], action) => {
   switch (action.type) {
     case LOAD_POST_COMMENTS:
-      return orderBy(action.comments, ['timestamp'], ['asc'])
+      return orderBy(action.comments, ['voteScore'], ['desc'])
     case VOTE_POST_COMMENT:
-      return action.comment
+      const { comment } = action
+      return {
+        ...state,
+        [comment.id]: comment
+      }
     case FETCH_NUM_COMMENTS:
       return {
         ...state,

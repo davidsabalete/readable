@@ -18,7 +18,7 @@ class Comment extends React.Component {
 
     render () {
         const { comment, votePostCommentAsync } = this.props
-        const { id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted } = comment
+        const { id, timestamp, body, author, voteScore } = comment
         return (
             <div className="comment">
                 <CommentButtons comment={this.props.comment} />
@@ -30,12 +30,14 @@ class Comment extends React.Component {
                 <div className="commentMetadata">
                     <span className="badge badge-pill badge-primary">{voteScore} votes </span> {" "}
                     <FontAwesome name="thumbs-o-up" onClick={() => { 
-						votePostCommentAsync(id, 'upVote')
-						// this.refresh()
+						votePostCommentAsync(id, 'upVote', () => {
+                            // this.refresh()
+                        })
 					 }} />{" "}
 					<FontAwesome name="thumbs-o-down" onClick={() => {
-						votePostCommentAsync(id, 'downVote')
-						// this.refresh()
+						votePostCommentAsync(id, 'downVote', () => {
+                            // this.refresh()
+                        })
                     }} />
                 </div>                    
                 {/* <p>parentId: {parentId}</p>
@@ -48,7 +50,12 @@ class Comment extends React.Component {
         )
     }
 }
-const mapStateToProps = ({ post }) => ({ post })
+const mapStateToProps = ({ post, comments }) => {
+    return { 
+        post, 
+        comments 
+    }
+}
 const mapDispatchToProps = {
     votePostCommentAsync
 }
