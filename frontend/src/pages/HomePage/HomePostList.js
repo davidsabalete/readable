@@ -7,7 +7,7 @@ class HomePostList extends React.Component {
 	render() {
 		return(
 			<div className="post-list">
-				{this.props.posts.length === 0 && <p>There are no posts for this category</p>}
+				{this.props.posts.length === 0 && <div className="card">There are no posts for this category</div>}
 				{this.props.posts.map(post => (
 					<Post key={post.id} post={post} />
 				))}

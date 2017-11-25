@@ -10,7 +10,7 @@ header {
   text-align: center;
 }
 footer {
-  /* position: absolute; */
+  position: absolute; 
   padding: 0.5em;
   right: 0;
   bottom: 0;
@@ -50,6 +50,13 @@ article {
   color: #0000ff;
   font-weight: bold;
 }
+.card-title {
+  text-decoration: none;   
+}
+.card-title h4:hover {
+  color: #000;
+  text-decoration: none;  
+}
 .navbar-nav {
   flex-direction: row;
 }
@@ -62,7 +69,6 @@ article {
 .invalid {
   color: rgb(222, 0, 0);
 }
-
 .order-controls {
   margin: 1em;
 }
@@ -78,7 +84,6 @@ article {
 .order-buttons label {
   vertical-align: text-bottom;
 }
-
 .comment {
   /* background-clip: border-box; */
   border: 1px solid rgba(0,0,0,.125);
@@ -86,7 +91,6 @@ article {
   margin: 1em 0;
   padding: 1em;
 }
-
 .date-info {
   font-size: small;
 }
