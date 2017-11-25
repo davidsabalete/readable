@@ -3,20 +3,17 @@ import { connect } from 'react-redux'
 import FontAwesome from 'react-fontawesome'
 import { votePostCommentAsync } from '../actions/comments'
 import CommentButtons from './CommentButtons'
+import { withRouter } from 'react-router'
 
 
 class Comment extends React.Component {
 
     refresh() {
-		const {url} = this.props.match
-		this.props.history.push(url)
-    }
-    
-    componentDidMount() {
-        // console.log(this.props.post)
+        const { url } = this.props.match
+        this.props.history.push(url)
     }
 
-    render () {
+    render() {
         const { comment, votePostCommentAsync } = this.props
         const { id, timestamp, body, author, voteScore } = comment
         return (
@@ -29,34 +26,28 @@ class Comment extends React.Component {
 
                 <div className="commentMetadata">
                     <span className="badge badge-pill badge-primary">{voteScore} votes </span> {" "}
-                    <FontAwesome name="thumbs-o-up" onClick={() => { 
-						votePostCommentAsync(id, 'upVote', () => {
-                            // this.refresh()
+                    <FontAwesome name="thumbs-o-up" onClick={() => {
+                        votePostCommentAsync(id, 'upVote', () => {
+                            this.refresh()
                         })
-					 }} />{" "}
-					<FontAwesome name="thumbs-o-down" onClick={() => {
-						votePostCommentAsync(id, 'downVote', () => {
-                            // this.refresh()
+                    }} />{" "}
+                    <FontAwesome name="thumbs-o-down" onClick={() => {
+                        votePostCommentAsync(id, 'downVote', () => {
+                            this.refresh()
                         })
                     }} />
-                </div>                    
-                {/* <p>parentId: {parentId}</p>
-                <p>timestamp: {timestamp}</p>
-                <p>author: {author}</p>
-                <p>voteScore: {voteScore} </p>
-                <p>deleted: {deleted}</p>
-                <p>parentDeleted: {parentDeleted}</p> */}
+                </div>
             </div>
         )
     }
 }
 const mapStateToProps = ({ post, comments }) => {
-    return { 
-        post, 
-        comments 
+    return {
+        post,
+        comments
     }
 }
 const mapDispatchToProps = {
     votePostCommentAsync
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Comment)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Comment))
