@@ -15,18 +15,10 @@ To intall in local:
 ```
 npm install
 ```
-or 
-```
-yarn 
-```
 
 * From inside *frontend* folder, execute in a console:
 ```
 npm install
-```
-or 
-```
-yarn 
 ```
 
 
@@ -41,10 +33,6 @@ node start
 * From inside *frontend* folder, execut in a console:
 ```
 npm start
-```
-or 
-```
-yarn start
 ```
 
 This last command will open a browser window with location: *localhost:3000*

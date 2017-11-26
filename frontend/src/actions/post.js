@@ -1,13 +1,13 @@
 import { api } from '../utils/api'
 import uuid from 'uuid/v4'
-
-export const LOAD_POST = 'LOAD_POST'
-export const CREATE_POST = 'CREATE_POST'
-export const VOTE_POST = 'VOTE_POST'
-export const DELETE_POST = 'DELETE_POST'
-export const RESET_POST = 'RESET_POST'
-export const UPDATE_POST = 'UPDATE_POST'
-
+import {
+	LOAD_POST,
+	CREATE_POST,
+	VOTE_POST,
+	DELETE_POST,
+	RESET_POST,
+	UPDATE_POST
+} from './constants'
 
 
 export const fetchPostAsync = (id, callback) => dispatch => {

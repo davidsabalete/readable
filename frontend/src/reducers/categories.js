@@ -1,6 +1,6 @@
 import { 
   LOAD_CATEGORIES
-} from '../actions/categories'
+} from '../actions/constants'
 
 const categories = (state = [], action) => {
   switch(action.type) {

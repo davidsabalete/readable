@@ -1,10 +1,9 @@
 import { api } from '../utils/api'
-
-export const LOAD_POSTS = 'LOAD_POSTS'
-export const LOAD_CATEGORY_POSTS = 'LOAD_CATEGORY_POSTS'
-export const SORT_POSTS = 'SORT_POSTS'
-
-
+import { 
+	LOAD_POSTS, 
+	LOAD_CATEGORY_POSTS, 
+	SORT_POSTS 
+} from './constants'
 
 export const fetchPostsAsync = () => dispatch => {
 	api.get(`/posts`)

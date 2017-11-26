@@ -3,7 +3,7 @@ import {
   LOAD_POSTS, 
   LOAD_CATEGORY_POSTS,
   SORT_POSTS,
-} from '../actions/posts'
+} from '../actions/constants'
 
 const posts = (state = [], action) => {
   switch(action.type) {

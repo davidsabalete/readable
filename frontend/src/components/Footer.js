@@ -1,9 +1,8 @@
 import React from 'react'
 
-export default function () {
-  return (
-    <footer>
-    	<div>by David Sabalete</div>
-    </footer>
-  ); 
-}
+const Footer = () => (
+  <footer>
+    <div>by David Sabalete</div>
+  </footer>
+)
+export default Footer

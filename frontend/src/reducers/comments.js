@@ -5,7 +5,7 @@ import {
   FETCH_NUM_COMMENTS,
   EDIT_POST_COMMENT,
   FETCH_COMMENT
-} from '../actions/comments'
+} from '../actions/constants'
 
 const comments = (state = [], action) => {
   switch (action.type) {

@@ -1,15 +1,15 @@
 import { api } from '../utils/api'
 import { filter } from 'lodash'
 import uuid from 'uuid/v4'
-
-export const LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS'
-export const CREATE_POST_COMMENT = 'CREATE_POST_COMMENT'
-export const EDIT_POST_COMMENT = 'EDIT_POST_COMMENT'
-export const DELETE_POST_COMMENT = 'DELETE_POST_COMMENT'
-export const VOTE_POST_COMMENT = 'VOTE_POST_COMMENT'
-export const FETCH_NUM_COMMENTS = 'FETCH_NUM_COMMENTS'
-export const FETCH_COMMENT = 'FETCH_COMMENT'
-
+import {
+	LOAD_POST_COMMENTS,
+	CREATE_POST_COMMENT,
+	EDIT_POST_COMMENT,
+	DELETE_POST_COMMENT,
+	VOTE_POST_COMMENT,
+	FETCH_NUM_COMMENTS,
+	FETCH_COMMENT
+} from './constants'
 
 
 export const fetchPostCommentsAsync = (postId) => dispatch => {

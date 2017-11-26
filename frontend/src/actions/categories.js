@@ -1,6 +1,8 @@
 import { api } from '../utils/api'
+import { 
+	LOAD_CATEGORIES 
+} from './constants'
 
-export const LOAD_CATEGORIES = 'LOAD_CATEGORIES'
 
 export const fetchCategoriesAsync = () => dispatch => {
 	api.get('/categories')

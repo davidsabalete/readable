@@ -6,7 +6,7 @@ import {
   RESET_POST,
   UPDATE_POST,
   // EDIT_POST,
-} from '../actions/post'
+} from '../actions/constants'
 
 const post = (state = {}, action) => {
   switch (action.type) {
