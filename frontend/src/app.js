@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import CreatePost from './pages/CreatePost'

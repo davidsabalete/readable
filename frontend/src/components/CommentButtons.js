@@ -6,36 +6,26 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import FontAwesome from 'react-fontawesome'
 
-class CommentButtons extends Component {
 
-    refresh() {
-        const {url} = this.props.match
-        this.props.history.push(url)
-    }
-
-    removeComment(id) {
-        if (window.confirm('This comment is gonna be removed, right?')) {
-            this.props.deletePostCommentAsync(id, () => this.refresh())
-        }
-    }
-    render() {
-        const { id } = this.props.comment
-        // console.log(this.props)
-        return (
-            <div className="action-buttons">
-                <Link to={`/edit/comment/${id}`} className="btn btn-primary btn-sm">
-                    <FontAwesome name="pencil" />
-                </Link>
-                <button className="btn btn-danger btn-sm" onClick={() => this.removeComment(id)}>
-                    <FontAwesome name="trash" />
-                </button>
-            </div>
-        )
+const removeComment = (props) => {
+    if (window.confirm('This comment is gonna be removed, right?')) {
+        props.deletePostCommentAsync(props.comment.id, () => props.history.push(props.match.url))
     }
 }
 
+const CommentButtons = (props) => (
+    <div className="action-buttons">
+        <Link to={`/edit/comment/${props.comment.id}`} className="btn btn-primary btn-sm">
+            <FontAwesome name="pencil" />
+        </Link>
+        <button className="btn btn-danger btn-sm" onClick={() => removeComment(props)}>
+            <FontAwesome name="trash" />
+        </button>
+    </div>
+)
+
 const mapDispatchToProps = {
-    deletePostCommentAsync, 
+    deletePostCommentAsync,
     fetchPostsAsync
 }
 export default withRouter(connect(null, mapDispatchToProps)(CommentButtons))
