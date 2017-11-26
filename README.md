@@ -58,6 +58,7 @@ For this project I have use the following libraries:
 * react-router-dom (https://github.com/ReactTraining/react-router)
 * redux (https://github.com/reactjs/redux)
 * redux-form (https://github.com/erikras/redux-form)
+* redux-logger (https://github.com/evgenyrodionov/redux-logger)
 * redux-thunk (https://github.com/gaearon/redux-thunk)
 * uuid (https://github.com/kelektiv/node-uuid)
 

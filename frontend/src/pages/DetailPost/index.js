@@ -31,6 +31,16 @@ class DetailPost extends Component {
 		this.props.votePostAsync(id, voteValue)
 	}
 
+	renderComments(comments) {
+		console.log(comments.length)
+		return (
+			<div>
+				<h5><FontAwesome name="comment" />  {comments.length} Comments </h5>
+				{comments.length > 0 && comments.map((comment) => <Comment comment={comment} key={comment.id} />)}
+			</div>
+		)
+	}
+
 	render() {
 		const { post, comments } = this.props
 		// console.log(comments)
@@ -71,10 +81,7 @@ class DetailPost extends Component {
 							<FontAwesome name="thumbs-o-up" onClick={() => this.vote('upVote')} />{" "}
 							<FontAwesome name="thumbs-o-down" onClick={() => this.vote('downVote')} />
 						</p>
-						<div>
-							{!isEmpty(comments) && <h5>Comments</h5>}
-							{!isEmpty(comments) && comments.length > 0 && comments.map((comment) => <Comment comment={comment} key={comment.id} />)}
-						</div>
+						{!isEmpty(comments) && this.renderComments(comments)}
 					</article>
 				</div>
 				<Footer />
