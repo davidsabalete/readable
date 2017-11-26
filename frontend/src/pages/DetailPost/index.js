@@ -44,10 +44,16 @@ class DetailPost extends Component {
 	render() {
 		const { post, comments } = this.props
 		// console.log(comments)
-		if (!post) {
+		if (isEmpty(post)) {
 			return (
-				<div className="alert alert-warning" role="alert">
-					Post not found
+				<div className="App">
+					<Header />
+					<div className="container">
+						<div className="card alert alert-warning" role="alert">
+							Post not found
+						</div>
+					</div>
+					<Footer />
 				</div>
 			)
 		}
