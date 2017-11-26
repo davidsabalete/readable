@@ -7,5 +7,5 @@ export const api = axios.create({
     'Accept': 'application/json',
     'Authorization': process.env.REACT_APP_API_TOKEN 
   },
-  //withCredentials: true
+  withCredentials: false
 })
