@@ -18,7 +18,7 @@ class Post extends Component {
 		this.props.history.push(url)
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		const { id } = this.props.post
 		this.props.fetchPostCommentsAsync(id)
 		this.props.fetchNumCommentsAsync(id, data => {
